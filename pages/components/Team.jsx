@@ -8,10 +8,11 @@ const Team = () => {
       width={"100%"}
       direction={"column"}
       justifyContent={"end"}
+      overflowX={"scroll"}
     >
       <Flex
         justifyContent={"space-around"}
-        width={"700%"}
+        width={"350%"}
         borderTop={"1px solid"}
         borderBottom={"1px solid"}
         borderTopColor={"brand.bodyInvert"}

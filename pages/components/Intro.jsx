@@ -28,6 +28,7 @@ const Intro = () => {
         position={"absolute"}
         height={35}
         width={40}
+        fill={"brand.body"}
       />
     </Flex>
   );

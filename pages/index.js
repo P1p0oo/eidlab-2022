@@ -4,6 +4,7 @@ import Head from "next/head";
 import Header from "./components/Header";
 import Intro from "./components/Intro";
 import Pieces from "./components/Pieces";
+import Services from "./components/Services";
 import Team from "./components/Team";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <Header></Header>
       <Intro></Intro>
       <Team></Team>
+      <Services></Services>
     </Box>
   );
 }
