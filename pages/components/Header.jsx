@@ -4,10 +4,13 @@ const Header = () => {
   return (
     <Flex
       padding={4}
+      pl={{ base: 4, lg: 40 }}
+      pr={{ base: 4, lg: 40 }}
       justifyContent={"space-between"}
       alignItems={"end"}
       position={"fixed"}
       width={"100%"}
+      zIndex={99}
     >
       <Flex alignItems={"end"}>
         <Image alt='logo' src='/favicon.ico' width={50} />

@@ -8,7 +8,7 @@ const Intro = () => {
       direction={"column"}
       alignItems={"center"}
       fontWeight={"bold"}
-      fontSize={"3xl"}
+      fontSize={{ base: "3xl", lg: "6xl" }}
       height={"100vh"}
       justifyContent={"center"}
       position={"relative"}

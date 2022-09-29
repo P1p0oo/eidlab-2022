@@ -6,7 +6,7 @@ import TinyArc from "../svg/TinyArc";
 
 const Pieces = () => {
   return (
-    <Box position={"absolute"}>
+    <Box position={"absolute"} zIndex={0} width={"100%"}>
       <Circle
         position={"absolute"}
         width={"130px"}
@@ -21,7 +21,7 @@ const Pieces = () => {
         height={"150px"}
         fill={"brand.primary"}
         top={"118px"}
-        left={"320px"}
+        right={"-40px"}
         transform={"rotate(90deg)"}
       ></HalfCircle>
       <Circle
@@ -30,7 +30,7 @@ const Pieces = () => {
         height={"90px"}
         fill={"brand.primary"}
         top={"539px"}
-        left={"267px"}
+        right={"67px"}
       ></Circle>
       <TinyArc
         position={"absolute"}
@@ -38,7 +38,7 @@ const Pieces = () => {
         height={"69px"}
         fill={"brand.highlight"}
         top={"525px"}
-        left={"317"}
+        right={"17"}
         transform={"rotate(215deg)"}
       ></TinyArc>
       <Arc
@@ -46,9 +46,35 @@ const Pieces = () => {
         width={"175px"}
         height={"175px"}
         fill={"brand.tertiary"}
-        top={"687px"}
+        top={"627px"}
         left={"-30px"}
       ></Arc>
+      <Circle
+        position={"absolute"}
+        width={"200px"}
+        height={"200px"}
+        fill={"brand.tertiary"}
+        top={"1750px"}
+        right={"-100px"}
+        zIndex={0}
+      ></Circle>
+      <TinyArc
+        position={"absolute"}
+        width={"101px"}
+        height={"69px"}
+        fill={"brand.secondary"}
+        top={"2770px"}
+        left={"-5"}
+        transform={"rotate(40deg)"}
+      ></TinyArc>
+      <Circle
+        position={"absolute"}
+        width={"170px"}
+        height={"170px"}
+        fill={"brand.primary"}
+        top={"3150px"}
+        right={"-100px"}
+      ></Circle>
     </Box>
   );
 };

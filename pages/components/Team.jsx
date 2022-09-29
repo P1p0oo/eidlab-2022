@@ -1,9 +1,24 @@
 import { Flex, Text } from "@chakra-ui/react";
+import Circle from "../svg/Circle";
 
 const Team = () => {
+  const techList = [
+    "HTML",
+    "CSS",
+    "JS",
+    "REACTJS",
+    "NODEJS",
+    "PHP",
+    "GRAPHQL",
+    "REST",
+    "PHP",
+    "WORDPRESS",
+  ];
+
+  const bannerSize = `${techList.length * 35}%`;
+
   return (
     <Flex
-      bg={"brand.secondary"}
       height={"100vh"}
       width={"100%"}
       direction={"column"}
@@ -12,7 +27,7 @@ const Team = () => {
     >
       <Flex
         justifyContent={"space-around"}
-        width={"350%"}
+        width={bannerSize}
         borderTop={"1px solid"}
         borderBottom={"1px solid"}
         borderTopColor={"brand.bodyInvert"}
@@ -22,17 +37,11 @@ const Team = () => {
         fontSize={"3xl"}
         color={"brand.bodyInvert"}
         bg={"brand.primary"}
+        zIndex={1}
       >
-        <Text>HTML</Text>
-        <Text>CSS</Text>
-        <Text>JS</Text>
-        <Text>REACTJS</Text>
-        <Text>NODEJS</Text>
-        <Text>PHP</Text>
-        <Text>GRAPHQL</Text>
-        <Text>REST</Text>
-        <Text>PHP</Text>
-        <Text>WORDPRESS</Text>
+        {techList.map((tech, index) => {
+          return <Text key={index}>{tech}</Text>;
+        })}
       </Flex>
     </Flex>
   );

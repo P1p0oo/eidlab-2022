@@ -1,5 +1,5 @@
 import { Flex, Heading } from "@chakra-ui/react";
-import Arrow from "../svg/Arrow";
+import Arrow from "../../../svg/Arrow";
 import Service from "./Service";
 
 const Services = () => {
@@ -9,7 +9,6 @@ const Services = () => {
       height={"100vh"}
       width={"100%"}
       direction={"column"}
-      color={"brand.bodyInvert"}
       justifyContent={"center"}
     >
       <Heading as='h2' size={"xl"} width={"80%"} ml={7}>

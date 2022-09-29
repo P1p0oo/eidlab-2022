@@ -1,4 +1,4 @@
-import { extendTheme } from "@chakra-ui/react";
+import { extendTheme, textDecoration } from "@chakra-ui/react";
 
 const theme = extendTheme({
   colors: {
@@ -19,6 +19,12 @@ const theme = extendTheme({
     global: {
       "html, body": {
         overflowX: "hidden",
+      },
+      a: {
+        _hover: {
+          textDecoration: "none",
+        },
+        textDecoration: "none",
       },
     },
   },
