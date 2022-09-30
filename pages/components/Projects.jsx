@@ -8,6 +8,7 @@ const Projects = () => {
       color={"brand.bodyInvert"}
       direction={"column"}
       alignItems={"center"}
+      mb={20}
     >
       <Heading as={"h2"} size={"3xl"}>
         Réalisations

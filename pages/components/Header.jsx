@@ -1,6 +1,6 @@
 import { Flex, Heading, Image, Link } from "@chakra-ui/react";
 
-const Header = () => {
+const Header = ({ bgColor }) => {
   return (
     <Flex
       padding={4}
@@ -12,14 +12,41 @@ const Header = () => {
       width={"100%"}
       zIndex={99}
     >
-      <Flex alignItems={"end"}>
-        <Image alt='logo' src='/favicon.ico' width={50} />
-        <Heading as={"h1"} size={"lg"} mb={0.25} ml={3} fontWeight={"bold"}>
+      <Flex alignItems={"end"} position={"relative"}>
+        <Image
+          alt='logo'
+          src={"/images/logo.png"}
+          width={50}
+          transitionDuration={"1s"}
+          opacity={bgColor == "brand.primary" ? "0%" : "100%"}
+        />
+        <Image
+          alt='black-logo'
+          src={"/images/blackLogo.png"}
+          width={50}
+          transitionDuration={"1s"}
+          opacity={bgColor == "brand.primary" ? "100%" : "0%"}
+          position={"absolute"}
+        />
+        <Heading
+          as={"h1"}
+          size={"lg"}
+          mb={0.25}
+          ml={3}
+          fontWeight={"bold"}
+          color={bgColor == "brand.body" ? "brand.bodyInvert" : "brand.body"}
+          transitionDuration={"1s"}
+        >
           Eid Lab
         </Heading>
       </Flex>
-      <Link mb={0.25}>
-        <Heading as={"h2"} size={"lg"}>
+      <Link mb={0.25} href={"#contact"}>
+        <Heading
+          as={"h2"}
+          size={"lg"}
+          color={bgColor == "brand.body" ? "brand.bodyInvert" : "brand.body"}
+          transitionDuration={"1s"}
+        >
           Contact
         </Heading>
       </Link>

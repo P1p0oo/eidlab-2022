@@ -17,7 +17,11 @@ const theme = extendTheme({
   },
   styles: {
     global: {
-      "html, body": {
+      html: {
+        overflowX: "hidden",
+        scrollBehavior: "smooth",
+      },
+      body: {
         overflowX: "hidden",
       },
       a: {

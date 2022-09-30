@@ -1,4 +1,5 @@
 import { Flex, Image, Text } from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const ServiceContent = ({ service, select, selectedService }) => {
   return (
@@ -12,7 +13,18 @@ const ServiceContent = ({ service, select, selectedService }) => {
       <Text fontWeight={"medium"} fontSize={"2xl"} mb={10}>
         {service.description}
       </Text>
-      <Image alt='service-thumbnail' src={service.img} width={300} />
+      {selectedService == select ? (
+        <motion.div
+          initial={{ transform: "scale(0)" }}
+          animate={{ transform: "scale(1)" }}
+          exit={{ transform: "scale(0)" }}
+          transition={{ type: "spring", duration: 0.5, stiffness: 70 }}
+        >
+          <Image alt='service-thumbnail' src={service.img} width={300} />
+        </motion.div>
+      ) : (
+        ""
+      )}
     </Flex>
   );
 };

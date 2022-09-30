@@ -24,6 +24,7 @@ const Team = () => {
       direction={"column"}
       justifyContent={"end"}
       overflowX={"scroll"}
+      id='team'
     >
       <Flex
         justifyContent={"space-around"}

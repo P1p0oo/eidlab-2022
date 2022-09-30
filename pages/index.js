@@ -1,7 +1,7 @@
 import { ArrowDownIcon } from "@chakra-ui/icons";
 import { Box, Heading, Text } from "@chakra-ui/react";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
 import Intro from "./components/Intro";
@@ -15,13 +15,19 @@ import { useScroll, motion } from "framer-motion";
 
 export default function Home() {
   const [isDesktop, setIsDesktop] = useState(false);
-  const [bgColor, setBackgroundColor] = useState("brand.bodyInvert");
+  const [windowWidth, setWindowWidth] = useState(undefined);
+
+  const [pagePosition, setPagePosition] = useState(0);
+  const [bgColor, setBgColor] = useState("brand.bodyInvert");
 
   useEffect(() => {
     if (typeof window !== undefined) {
       window.addEventListener("resize", (e) => {
         setIsDesktop(window.innerWidth >= 1024);
+        setWindowWidth(window.innerWidth);
       });
+      setWindowWidth(window.innerWidth);
+
       setIsDesktop(window.innerWidth >= 1024);
     }
   }, []);
@@ -29,26 +35,30 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
 
   scrollYProgress.onChange((last) => {
-    if (!last) {
+    if (!last || !windowWidth) {
       return;
     }
     if (last < 0.1) {
-      setBackgroundColor("brand.bodyInvert");
+      setPagePosition(0);
+      setBgColor("brand.bodyInvert");
       return;
     }
     if (last < 0.25) {
-      setBackgroundColor("brand.secondary");
+      setPagePosition(1);
+      setBgColor("brand.secondary");
       return;
     }
     if (last < 0.9) {
-      setBackgroundColor("brand.body");
+      setPagePosition(2);
+      setBgColor("brand.body");
       return;
     }
-    setBackgroundColor("brand.primary");
+    setPagePosition(3);
+    setBgColor("brand.primary");
     return;
   });
 
-  useEffect(() => {}, []);
+  if (!windowWidth) return <Box></Box>;
 
   return (
     <Box
@@ -56,7 +66,6 @@ export default function Home() {
       backgroundColor={bgColor}
       transitionDuration={"1s"}
     >
-      <Pieces></Pieces>
       <Head>
         <title>Eid Lab</title>
         <meta
@@ -65,17 +74,24 @@ export default function Home() {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Header></Header>
-      <Intro></Intro>
-      <Team></Team>
-      {isDesktop ? (
-        <ServicesDesktop></ServicesDesktop>
-      ) : (
-        <ServicesMobile></ServicesMobile>
-      )}
+      <Pieces
+        windowWidth={windowWidth}
+        pagePosition={pagePosition}
+        isDesktop={isDesktop}
+      ></Pieces>
+      <Box position={"relative"}>
+        <Header bgColor={bgColor} pagePosition={pagePosition}></Header>
+        <Intro></Intro>
+        <Team></Team>
+        {isDesktop ? (
+          <ServicesDesktop></ServicesDesktop>
+        ) : (
+          <ServicesMobile></ServicesMobile>
+        )}
 
-      <Projects></Projects>
-      <Contact></Contact>
+        <Projects></Projects>
+        <Contact></Contact>
+      </Box>
     </Box>
   );
 }

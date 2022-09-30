@@ -1,4 +1,5 @@
 import { ListItem } from "@chakra-ui/react";
+import Arrow from "../../../svg/Arrow";
 
 const ServiceTitle = ({
   title,
@@ -17,7 +18,12 @@ const ServiceTitle = ({
         setSelectedService(select);
       }}
     >
-      {title}
+      {title}{" "}
+      {selectedService == select ? (
+        <Arrow fill={"brand.secondary"} ml={3} height={6}></Arrow>
+      ) : (
+        ""
+      )}
     </ListItem>
   );
 };

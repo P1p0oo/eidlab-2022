@@ -5,11 +5,11 @@ import Service from "./Service";
 const Services = () => {
   return (
     <Flex
-      bg={"brand.body"}
       height={"100vh"}
       width={"100%"}
       direction={"column"}
       justifyContent={"center"}
+      color={"brand.bodyInvert"}
     >
       <Heading as='h2' size={"xl"} width={"80%"} ml={7}>
         Je peux vous accompagner sur :
