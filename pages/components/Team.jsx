@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import Circle from "../svg/Circle";
 import { motion } from "framer-motion";
 import { useRef } from "react";
@@ -70,10 +70,55 @@ const Team = () => {
       height={"100vh"}
       width={"100%"}
       direction={"column"}
-      justifyContent={"end"}
+      justifyContent={"space-between"}
       overflowX={"hidden"}
       id='team'
     >
+      <Heading as={"h2"} size={"3xl"} textAlign={"center"} mt={16}>
+        L{"'"}équipe
+      </Heading>
+      <Flex
+        direction={"column"}
+        height={"100%"}
+        justifyContent={"space-around"}
+      >
+        <Flex direction={"column"} ml={180}>
+          <Heading as={"h3"} size={"xl"} color={"brand.primary"}>
+            Philippe Eid
+          </Heading>
+          <Text fontSize={"2xl"} fontWeight={"bold"} m={0}>
+            CEO
+          </Text>
+          <Text fontSize={"2xl"} fontWeight={"bold"} m={0}>
+            8 ans d{"'"}expérience
+          </Text>
+        </Flex>
+
+        <Flex direction={"column"} alignItems={"end"} mr={180}>
+          <Heading as={"h3"} size={"xl"} color={"brand.primary"}>
+            Mathias Emile
+          </Heading>
+          <Text fontSize={"2xl"} fontWeight={"bold"} m={0}>
+            Alternant
+          </Text>
+          <Text fontSize={"2xl"} fontWeight={"bold"} m={0}>
+            Etudiant ingénieur
+          </Text>
+        </Flex>
+
+        <Flex direction={"column"} ml={170}>
+          <Heading as={"h3"} size={"xl"} color={"brand.primary"}>
+            Ludovic Fayolle
+          </Heading>
+          <Text fontSize={"2xl"} fontWeight={"bold"} m={0}>
+            Alternant
+          </Text>
+          <Text fontSize={"2xl"} fontWeight={"bold"} m={0}>
+            Etudiant ingénieur
+          </Text>
+        </Flex>
+      </Flex>
+
       <motion.div
         initial={{
           x: `-${(techList.length - 8) * 35}%`,

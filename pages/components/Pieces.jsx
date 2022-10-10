@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import Arc from "../svg/Arc";
 import Circle from "../svg/Circle";
 import HalfCircle from "../svg/HalfCircle";
@@ -9,6 +9,10 @@ import { useEffect, useRef, useState } from "react";
 const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
   const [bodyHeight, setBodyHeight] = useState(undefined);
   const [circle1, setCircle1] = useState({
+    position: {},
+    fill: "",
+  });
+  const [halfCircle1, setHalfCircle1] = useState({
     position: {},
     fill: "",
   });
@@ -36,6 +40,15 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
           },
           fill: "brand.primary",
         });
+        setHalfCircle1({
+          position: {
+            x: windowWidth - 60,
+            y: 150,
+            scale: 1,
+            rotate: 0,
+          },
+          fill: "brand.primary",
+        });
         break;
       case 1:
         setCircle1({
@@ -45,6 +58,15 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
             scale: 2,
           },
           fill: "brand.highlight",
+        });
+        setHalfCircle1({
+          position: {
+            x: 170,
+            y: 1100,
+            scale: 1,
+            rotate: 100,
+          },
+          fill: "/images/philippe.jpg",
         });
         break;
       case 2:
@@ -118,6 +140,15 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
       },
       fill: "brand.primary",
     });
+    setHalfCircle1({
+      position: {
+        x: windowWidth - 60,
+        y: 150,
+        scale: 1,
+        rotate: 0,
+      },
+      fill: "brand.primary",
+    });
 
     setCircle2({
       position: {
@@ -176,15 +207,34 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
               fill={"brand.secondary"}
               transform={`scale(${scaling})`}
             ></Circle>
-            <HalfCircle
-              position={"absolute"}
-              width={"150"}
-              height={"150px"}
-              fill={"brand.primary"}
-              top={"118px"}
-              right={"-40px"}
-              transform={`rotate(90deg) scale(${scaling})`}
-            ></HalfCircle>
+            {/* <motion.div
+              style={{ position: "absolute" }}
+              animate={halfCircle1.position}
+              transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
+            >
+              <Image
+                src='/images/philippe.png'
+                width={"130px"}
+                height={"150px"}
+                right={"0px"}
+                top={"0px"}
+                position={"absolute"}
+                alt='philippe'
+              />
+            </motion.div> */}
+            <motion.div
+              style={{ position: "absolute" }}
+              animate={halfCircle1.position}
+              transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
+            >
+              <HalfCircle
+                position={"absolute"}
+                width={"150px"}
+                height={"150px"}
+                fill={"brand.primary"}
+                transform={`scale(${scaling})`}
+              ></HalfCircle>
+            </motion.div>
             <motion.div
               style={{ position: "absolute" }}
               animate={circle1.position}
