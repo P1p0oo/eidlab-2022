@@ -1,5 +1,5 @@
 import { ArrowDownIcon } from "@chakra-ui/icons";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Text, useMediaQuery } from "@chakra-ui/react";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 import Contact from "./components/Contact";
@@ -11,28 +11,36 @@ import ServicesMobile from "./components/Services/mobile/Services";
 import ServicesDesktop from "./components/Services/desktop/Services";
 import Team from "./components/Team";
 import Circle from "./svg/Circle";
-import { useScroll, motion } from "framer-motion";
+import {
+  useScroll,
+  motion,
+  useTransform,
+  useViewportScroll,
+} from "framer-motion";
 
 export default function Home() {
-  const [isDesktop, setIsDesktop] = useState(false);
   const [windowWidth, setWindowWidth] = useState(undefined);
 
   const [pagePosition, setPagePosition] = useState(0);
   const [bgColor, setBgColor] = useState("brand.bodyInvert");
 
+  const [isDesktop] = useMediaQuery("(min-width: 1024px)");
+
   useEffect(() => {
     if (typeof window !== undefined) {
       window.addEventListener("resize", (e) => {
-        setIsDesktop(window.innerWidth >= 1024);
         setWindowWidth(window.innerWidth);
       });
       setWindowWidth(window.innerWidth);
-
-      setIsDesktop(window.innerWidth >= 1024);
     }
   }, []);
 
   const { scrollYProgress } = useScroll();
+  console.log(scrollYProgress);
+
+  const paralax = useTransform(scrollYProgress, [0, 1], [0, -500], {
+    clamp: false,
+  });
 
   scrollYProgress.onChange((last) => {
     if (!last || !windowWidth) {
@@ -78,6 +86,7 @@ export default function Home() {
         windowWidth={windowWidth}
         pagePosition={pagePosition}
         isDesktop={isDesktop}
+        paralax={paralax}
       ></Pieces>
       <Box position={"relative"}>
         <Header bgColor={bgColor} pagePosition={pagePosition}></Header>

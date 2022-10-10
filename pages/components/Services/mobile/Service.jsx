@@ -1,8 +1,8 @@
 import { Flex, Heading, Image, Text } from "@chakra-ui/react";
 
-const Service = ({ image, title, text }) => {
+const Service = ({ image, title, text, index }) => {
   return (
-    <Flex direction={"column"} width={300} m={5}>
+    <Flex direction={"column"} width={300} m={5} id={`service-${index}`}>
       <Image
         src={image}
         alt='service-image'
