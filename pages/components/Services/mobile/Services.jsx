@@ -56,7 +56,14 @@ const Services = () => {
       justifyContent={"center"}
       color={"brand.bodyInvert"}
     >
-      <Heading as='h2' size={"xl"} width={"80%"} ml={7}>
+      <Heading
+        as='h2'
+        size={"3xl"}
+        width={"80%"}
+        ml={7}
+        textAlign={"center"}
+        margin={"auto"}
+      >
         Je peux vous accompagner sur :
       </Heading>
       <Flex

@@ -41,7 +41,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setCircle1({
           position: {
             x: windowWidth - 15,
-            y: 1039,
+            y: 1000,
             scale: 2,
           },
           fill: "brand.highlight",
@@ -51,7 +51,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setCircle1({
           position: {
             x: windowWidth >= 992 ? windowWidth - 250 : windowWidth - 80,
-            y: windowWidth >= 992 ? 1700 : 1499,
+            y: windowWidth >= 992 ? 1870 : 1679,
             scale: 1.8,
           },
           fill: "brand.tertiary",
@@ -64,7 +64,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
                 ? bodyHeight - 1500
                 : windowWidth >= 768
                 ? bodyHeight - 1650
-                : bodyHeight - 1450,
+                : bodyHeight - 1000,
             scale: 0.4,
           },
           fill: "brand.secondary",
@@ -77,7 +77,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
                 ? bodyHeight - 1200
                 : windowWidth >= 768
                 ? bodyHeight - 1530
-                : bodyHeight - 1330,
+                : bodyHeight - 1070,
             scale: 1.2,
           },
           fill: "brand.secondary",
@@ -87,7 +87,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setCircle2({
           position: {
             x: windowWidth - 150,
-            y: bodyHeight - 155,
+            y: bodyHeight + 355,
             scale: 1.2,
           },
           fill: "brand.secondary",
@@ -95,7 +95,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setArc1({
           position: {
             x: 0,
-            y: bodyHeight - 250,
+            y: bodyHeight + 280,
             scale: 1.2,
           },
           fill: "brand.tertiary",
@@ -127,7 +127,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
             ? bodyHeight - 1500
             : windowWidth >= 768
             ? bodyHeight - 1650
-            : bodyHeight - 1450,
+            : bodyHeight - 1000,
         scale: 0.4,
       },
       fill: "brand.secondary",
@@ -141,7 +141,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
             ? bodyHeight - 1200
             : windowWidth >= 768
             ? bodyHeight - 1530
-            : bodyHeight - 1330,
+            : bodyHeight - 1070,
         scale: 1.2,
       },
       fill: "brand.secondary",
@@ -220,7 +220,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
               width={"101px"}
               height={"69px"}
               fill={"brand.secondary"}
-              top={{ base: "2340px", lg: "2440px" }}
+              top={{ base: "2340px", lg: "2600px" }}
               left={{ base: "-5", lg: "10" }}
               transform={`rotate(40deg) scale(${scaling})`}
             ></TinyArc>
@@ -229,7 +229,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
               width={"170px"}
               height={"170px"}
               fill={"brand.primary"}
-              top={{ base: "2750px", md: "2950px" }}
+              top={{ base: "2950px", md: "3150px" }}
               right={"-120px"}
               transform={`scale(${scaling})`}
             ></Circle>
@@ -247,7 +247,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
               width={"100px"}
               height={"100px"}
               fill={"brand.tertiary"}
-              top={{ base: "3340px", md: "3780px" }}
+              top={{ base: "3540px", md: "3780px" }}
               right={{ base: "0px", lg: "70px" }}
               transform={`rotate(40deg) scale(${scaling})`}
             ></TinyArc>
@@ -277,7 +277,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
             </motion.div>
             <HalfCircle
               position={"absolute"}
-              top={{ base: "4350px", md: "5200px", lg: "4650px" }}
+              top={{ base: "4800px", md: "5200px", lg: "5100px" }}
               right={{ base: "30px", lg: "300px" }}
               width={"150px"}
               height={"150px"}

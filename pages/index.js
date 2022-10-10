@@ -1,7 +1,6 @@
-import { ArrowDownIcon } from "@chakra-ui/icons";
-import { Box, Heading, Text, useMediaQuery } from "@chakra-ui/react";
+import { Box, useMediaQuery } from "@chakra-ui/react";
 import Head from "next/head";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
 import Intro from "./components/Intro";
@@ -10,13 +9,7 @@ import Projects from "./components/Projects";
 import ServicesMobile from "./components/Services/mobile/Services";
 import ServicesDesktop from "./components/Services/desktop/Services";
 import Team from "./components/Team";
-import Circle from "./svg/Circle";
-import {
-  useScroll,
-  motion,
-  useTransform,
-  useViewportScroll,
-} from "framer-motion";
+import { useScroll, useTransform } from "framer-motion";
 
 export default function Home() {
   const [windowWidth, setWindowWidth] = useState(undefined);
@@ -36,7 +29,6 @@ export default function Home() {
   }, []);
 
   const { scrollYProgress } = useScroll();
-  // console.log(scrollYProgress);
 
   const paralax = useTransform(scrollYProgress, [0, 1], [0, -500], {
     clamp: false,
@@ -66,8 +58,6 @@ export default function Home() {
     return;
   });
 
-  if (!windowWidth) return <Box></Box>;
-
   return (
     <Box
       position={"relative"}
@@ -82,12 +72,15 @@ export default function Home() {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Pieces
-        windowWidth={windowWidth}
-        pagePosition={pagePosition}
-        isDesktop={isDesktop}
-        paralax={paralax}
-      ></Pieces>
+      {windowWidth && (
+        <Pieces
+          windowWidth={windowWidth}
+          pagePosition={pagePosition}
+          isDesktop={isDesktop}
+          paralax={paralax}
+        ></Pieces>
+      )}
+
       <Box position={"relative"}>
         <Header bgColor={bgColor} pagePosition={pagePosition}></Header>
         <Intro></Intro>

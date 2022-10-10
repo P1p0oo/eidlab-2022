@@ -24,6 +24,7 @@ const Contact = () => {
         color={"brand.secondary"}
         href='mailto:philippe@eid-lab.com'
         mb={10}
+        textAlign={"center"}
       >
         philippe@eid-lab.com
       </Link>
@@ -44,7 +45,6 @@ const Contact = () => {
           </Icon>
         </Flex>
       </Link>
-      {/* <Image src='/images/linkedin.png' alt='linkedin' /> */}
     </Flex>
   );
 };
