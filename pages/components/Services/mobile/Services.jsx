@@ -1,8 +1,13 @@
 import { Flex, Heading, Link } from "@chakra-ui/react";
+import { useEffect, useRef, useState } from "react";
 import Arrow from "../../../svg/Arrow";
 import Service from "./Service";
 
 const Services = () => {
+  const [selectedService, setSelectedService] = useState(0);
+
+  const servicesContainer = useRef();
+
   const services = [
     {
       image: "/images/website.png",
@@ -36,6 +41,13 @@ const Services = () => {
     },
   ];
 
+  useEffect(() => {
+    if (servicesContainer.current == undefined) return;
+    servicesContainer.current.scrollLeft =
+      (selectedService * servicesContainer.current.scrollWidth) /
+      services.length;
+  }, [selectedService]);
+
   return (
     <Flex
       height={"100vh"}
@@ -47,7 +59,11 @@ const Services = () => {
       <Heading as='h2' size={"xl"} width={"80%"} ml={7}>
         Je peux vous accompagner sur :
       </Heading>
-      <Flex overflowX={"scroll"}>
+      <Flex
+        overflowX={"scroll"}
+        ref={servicesContainer}
+        scrollBehavior={"smooth"}
+      >
         <Flex width={"600%"}>
           {services.map((service, index) => {
             return (
@@ -63,16 +79,35 @@ const Services = () => {
         </Flex>
       </Flex>
       <Flex justifyContent={"center"} mt={"5"}>
-        <Link href='service-3'>
-          <Arrow
-            width={30}
-            height={30}
-            fill={"brand.secondary"}
-            transform={"rotate(180deg)"}
-            mr={3}
-          ></Arrow>
-        </Link>
-        <Arrow ml={3} width={30} height={30} fill={"brand.secondary"}></Arrow>
+        <Arrow
+          width={30}
+          height={30}
+          fill={"brand.secondary"}
+          transform={"rotate(180deg)"}
+          mr={3}
+          transitionDuration={"0.1s"}
+          onClick={() =>
+            setSelectedService(
+              selectedService > 0 ? selectedService - 1 : selectedService
+            )
+          }
+          _active={{ opacity: 0.6, transform: "scale(0.9) rotate(180deg)" }}
+        ></Arrow>
+        <Arrow
+          ml={3}
+          width={30}
+          height={30}
+          fill={"brand.secondary"}
+          transitionDuration={"0.1s"}
+          onClick={() =>
+            setSelectedService(
+              selectedService < services.length - 1
+                ? selectedService + 1
+                : selectedService
+            )
+          }
+          _active={{ opacity: 0.6, transform: "scale(0.9)" }}
+        ></Arrow>
       </Flex>
     </Flex>
   );

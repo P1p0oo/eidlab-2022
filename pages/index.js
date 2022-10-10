@@ -36,7 +36,7 @@ export default function Home() {
   }, []);
 
   const { scrollYProgress } = useScroll();
-  console.log(scrollYProgress);
+  // console.log(scrollYProgress);
 
   const paralax = useTransform(scrollYProgress, [0, 1], [0, -500], {
     clamp: false,
