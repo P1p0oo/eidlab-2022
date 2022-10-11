@@ -84,7 +84,7 @@ export default function Home() {
       <Box position={"relative"}>
         <Header bgColor={bgColor} pagePosition={pagePosition}></Header>
         <Intro></Intro>
-        <Team></Team>
+        <Team pagePosition={pagePosition}></Team>
         {isDesktop ? (
           <ServicesDesktop></ServicesDesktop>
         ) : (

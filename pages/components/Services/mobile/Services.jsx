@@ -55,6 +55,7 @@ const Services = () => {
       direction={"column"}
       justifyContent={"center"}
       color={"brand.bodyInvert"}
+      mb={10}
     >
       <Heading
         as='h2'

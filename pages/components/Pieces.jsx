@@ -8,6 +8,13 @@ import { useEffect, useRef, useState } from "react";
 
 const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
   const [bodyHeight, setBodyHeight] = useState(undefined);
+
+  const [scaling, setScaling] = useState(1.0);
+
+  const ref = useRef(null);
+
+  // Moving pieces useState initialization
+
   const [circle1, setCircle1] = useState({
     position: {},
     fill: "",
@@ -15,6 +22,23 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
   const [halfCircle1, setHalfCircle1] = useState({
     position: {},
     fill: "",
+  });
+  const [halfCircle2, setHalfCircle2] = useState({
+    position: {},
+    fill: "",
+  });
+  const [tinyArc1, setTinyArc1] = useState({
+    position: {},
+    fill: "",
+    delay: "",
+  });
+  const [mathias, setMathias] = useState({
+    position: {},
+    delay: "",
+  });
+  const [ludovic, setLudovic] = useState({
+    position: {},
+    delay: "",
   });
   const [circle2, setCircle2] = useState({
     position: {},
@@ -24,9 +48,97 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
     position: {},
     fill: "",
   });
-  const [scaling, setScaling] = useState(1.0);
 
-  const ref = useRef(null);
+  // Moving pieces default position configuration
+
+  useEffect(() => {
+    if (!ref.current) return;
+    setBodyHeight(ref.current.clientHeight);
+    if (!bodyHeight || !windowWidth) return;
+    setCircle1({
+      position: {
+        x: windowWidth - 160,
+        y: 539,
+        scale: 1,
+      },
+      fill: "brand.primary",
+    });
+    setHalfCircle1({
+      position: {
+        x: windowWidth - 60,
+        y: 150,
+        scale: 1,
+        rotate: 0,
+        opacity: 1,
+      },
+      fill: "brand.primary",
+    });
+    setHalfCircle2({
+      position: {
+        x: windowWidth - 134,
+        y: 225,
+        scale: 1,
+        rotate: -90,
+        opacity: 0,
+      },
+    });
+    setTinyArc1({
+      position: {
+        x: 80,
+        y: 1185,
+        scale: 0.8,
+        rotate: -60,
+        opacity: 0,
+      },
+      fill: "brand.primary",
+      delay: 0,
+    });
+    setMathias({
+      position: {
+        x: windowWidth,
+        y: windowWidth >= 992 ? 1350 : 1300,
+        scale: 0.8,
+        opacity: 0,
+      },
+    });
+    setLudovic({
+      position: {
+        x: 0,
+        y: 1530,
+        scale: 0.8,
+        opacity: 1,
+      },
+    });
+    setCircle2({
+      position: {
+        x: windowWidth - 120,
+        y:
+          windowWidth >= 992
+            ? bodyHeight - 1500
+            : windowWidth >= 768
+            ? bodyHeight - 1650
+            : bodyHeight - 1000,
+        scale: 0.4,
+      },
+      fill: "brand.secondary",
+    });
+
+    setArc1({
+      position: {
+        x: 0,
+        y:
+          windowWidth >= 992
+            ? bodyHeight - 1200
+            : windowWidth >= 768
+            ? bodyHeight - 1530
+            : bodyHeight - 1070,
+        scale: 1.2,
+      },
+      fill: "brand.secondary",
+    });
+  }, [bodyHeight, windowWidth, ref]);
+
+  // Moving pieces breakpoint configuration
 
   useEffect(() => {
     setScaling(isDesktop ? 1.5 : 1);
@@ -46,8 +158,47 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
             y: 150,
             scale: 1,
             rotate: 0,
+            opacity: 1,
           },
           fill: "brand.primary",
+        });
+        setHalfCircle2({
+          position: {
+            x: windowWidth - 134,
+            y: 225,
+            scale: 1,
+            rotate: -90,
+            opacity: 0,
+          },
+        });
+        setTinyArc1({
+          position: {
+            x: windowWidth >= 992 ? 280 : 100,
+            y: 1215,
+            scale: 0.8,
+            rotate: -60,
+            opacity: 0,
+          },
+          fill: "brand.primary",
+          delay: 0,
+        });
+        setMathias({
+          position: {
+            x: windowWidth,
+            y: windowWidth >= 992 ? 1350 : 1300,
+            scale: 0.8,
+            opacity: 0,
+          },
+          delay: 0,
+        });
+        setLudovic({
+          position: {
+            x: -200,
+            y: 1530,
+            scale: 0.8,
+            opacity: 0,
+          },
+          delay: 0,
         });
         break;
       case 1:
@@ -61,22 +212,99 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         });
         setHalfCircle1({
           position: {
-            x: 170,
-            y: 1100,
+            x: windowWidth >= 992 ? 370 : 170,
+            y: windowWidth >= 992 ? 1190 : 1100,
             scale: 1,
-            rotate: 100,
+            rotate: 110,
+            opacity: 0,
           },
-          fill: "/images/philippe.jpg",
+          fill: "brand.primary",
+        });
+        setHalfCircle2({
+          position: {
+            x: windowWidth >= 992 ? 222 : 22,
+            y: windowWidth >= 992 ? 1178 : 1088,
+            scale: 1,
+            rotate: 10,
+            opacity: 1,
+          },
+        });
+        setTinyArc1({
+          position: {
+            x: windowWidth >= 992 ? 233 : 33,
+            y: windowWidth >= 992 ? 1295 : 1195,
+            scale: 0.8,
+            rotate: 0,
+            opacity: 1,
+          },
+          fill: "brand.primary",
+          delay: 1,
+        });
+        setMathias({
+          position: {
+            x: windowWidth >= 992 ? windowWidth - 370 : windowWidth - 170,
+            y: windowWidth >= 992 ? 1350 : 1300,
+            scale: 0.8,
+            opacity: 1,
+          },
+          delay: 0.25,
+        });
+        setLudovic({
+          position: {
+            x: windowWidth >= 992 ? 210 : 10,
+            y: 1530,
+            scale: 0.8,
+            opacity: 1,
+          },
+          delay: 0.5,
         });
         break;
       case 2:
         setCircle1({
           position: {
             x: windowWidth >= 992 ? windowWidth - 250 : windowWidth - 80,
-            y: windowWidth >= 992 ? 1870 : 1679,
+            y: windowWidth >= 992 ? 1870 : 1849,
             scale: 1.8,
           },
           fill: "brand.tertiary",
+        });
+        setHalfCircle2({
+          position: {
+            x: -200,
+            y: windowWidth >= 992 ? 1178 : 1088,
+            scale: 1,
+            rotate: 10,
+            opacity: 0,
+          },
+        });
+        setTinyArc1({
+          position: {
+            x: -200,
+            y: windowWidth >= 992 ? 1295 : 1195,
+            scale: 0.8,
+            rotate: 0,
+            opacity: 0,
+          },
+          fill: "brand.primary",
+          delay: 0,
+        });
+        setMathias({
+          position: {
+            x: windowWidth,
+            y: windowWidth >= 992 ? 1350 : 1300,
+            scale: 0.8,
+            opacity: 0,
+          },
+          delay: 0,
+        });
+        setLudovic({
+          position: {
+            x: -200,
+            y: 1530,
+            scale: 0.8,
+            opacity: 0,
+          },
+          delay: 0,
         });
         setCircle2({
           position: {
@@ -109,7 +337,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setCircle2({
           position: {
             x: windowWidth - 150,
-            y: bodyHeight + 355,
+            y: bodyHeight + 365,
             scale: 1.2,
           },
           fill: "brand.secondary",
@@ -127,57 +355,6 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         break;
     }
   }, [pagePosition, windowWidth, bodyHeight]);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    setBodyHeight(ref.current.clientHeight);
-    if (!bodyHeight || !windowWidth) return;
-    setCircle1({
-      position: {
-        x: windowWidth - 160,
-        y: 539,
-        scale: 1,
-      },
-      fill: "brand.primary",
-    });
-    setHalfCircle1({
-      position: {
-        x: windowWidth - 60,
-        y: 150,
-        scale: 1,
-        rotate: 0,
-      },
-      fill: "brand.primary",
-    });
-
-    setCircle2({
-      position: {
-        x: windowWidth - 120,
-        y:
-          windowWidth >= 992
-            ? bodyHeight - 1500
-            : windowWidth >= 768
-            ? bodyHeight - 1650
-            : bodyHeight - 1000,
-        scale: 0.4,
-      },
-      fill: "brand.secondary",
-    });
-
-    setArc1({
-      position: {
-        x: 0,
-        y:
-          windowWidth >= 992
-            ? bodyHeight - 1200
-            : windowWidth >= 768
-            ? bodyHeight - 1530
-            : bodyHeight - 1070,
-        scale: 1.2,
-      },
-      fill: "brand.secondary",
-    });
-  }, [bodyHeight, windowWidth, ref]);
 
   return (
     <Box
@@ -207,25 +384,32 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
               fill={"brand.secondary"}
               transform={`scale(${scaling})`}
             ></Circle>
-            {/* <motion.div
+            <motion.div
               style={{ position: "absolute" }}
-              animate={halfCircle1.position}
-              transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
+              animate={tinyArc1.position}
+              transition={{
+                type: "spring",
+                stiffness: 50,
+                duration: 0.5,
+                delay: tinyArc1.delay,
+              }}
             >
-              <Image
-                src='/images/philippe.png'
-                width={"130px"}
-                height={"150px"}
-                right={"0px"}
-                top={"0px"}
+              <TinyArc
+                fill={"brand.primary"}
+                transform={`scale(${scaling})`}
                 position={"absolute"}
-                alt='philippe'
-              />
-            </motion.div> */}
+                width={"101px"}
+                height={"69px"}
+              ></TinyArc>
+            </motion.div>
             <motion.div
               style={{ position: "absolute" }}
               animate={halfCircle1.position}
-              transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
+              transition={{
+                type: "spring",
+                stiffness: 50,
+                duration: 0.5,
+              }}
             >
               <HalfCircle
                 position={"absolute"}
@@ -235,6 +419,60 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
                 transform={`scale(${scaling})`}
               ></HalfCircle>
             </motion.div>
+            <motion.div
+              style={{ position: "absolute", width: "150px" }}
+              animate={halfCircle2.position}
+              transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
+            >
+              <Image
+                src='/images/halfCirclePhilippe.png'
+                width={"150px"}
+                height={"150px"}
+                position={"absolute"}
+                transform={`scale(${scaling})`}
+                alt='philippe'
+              />
+            </motion.div>
+
+            <motion.div
+              style={{ position: "absolute" }}
+              animate={mathias.position}
+              transition={{
+                type: "spring",
+                stiffness: 50,
+                duration: 0.5,
+                delay: mathias.delay,
+              }}
+            >
+              <Image
+                src='/images/mathias.jpg'
+                width={"150px"}
+                height={"150px"}
+                borderRadius={100}
+                alt={"mathias"}
+                transform={`scale(${scaling})`}
+              />
+            </motion.div>
+            <motion.div
+              style={{ position: "absolute" }}
+              animate={ludovic.position}
+              transition={{
+                type: "spring",
+                stiffness: 50,
+                duration: 0.5,
+                delay: ludovic.delay,
+              }}
+            >
+              <Image
+                src='/images/ludovic.jpg'
+                width={"150px"}
+                height={"150px"}
+                borderRadius={100}
+                transform={`scale(${scaling})`}
+                alt={"ludovic"}
+              />
+            </motion.div>
+
             <motion.div
               style={{ position: "absolute" }}
               animate={circle1.position}
