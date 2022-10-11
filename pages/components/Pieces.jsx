@@ -6,7 +6,13 @@ import TinyArc from "../svg/TinyArc";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
+const Pieces = ({
+  windowWidth,
+  realWindowWidth,
+  pagePosition,
+  isDesktop,
+  paralax,
+}) => {
   const [bodyHeight, setBodyHeight] = useState(undefined);
 
   const [scaling, setScaling] = useState(1.0);
@@ -173,8 +179,8 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         });
         setTinyArc1({
           position: {
-            x: windowWidth >= 992 ? 280 : 100,
-            y: 1215,
+            x: realWindowWidth > 2000 ? 98 : windowWidth >= 992 ? 280 : 100,
+            y: realWindowWidth > 2000 ? 1687 : 1215,
             scale: 0.8,
             rotate: -60,
             opacity: 0,
@@ -185,7 +191,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setMathias({
           position: {
             x: windowWidth,
-            y: windowWidth >= 992 ? 1350 : 1300,
+            y: realWindowWidth > 2000 ? 1990 : windowWidth >= 992 ? 1350 : 1300,
             scale: 0.8,
             opacity: 0,
           },
@@ -194,7 +200,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setLudovic({
           position: {
             x: -200,
-            y: 1530,
+            y: realWindowWidth > 2000 ? 2320 : 1530,
             scale: 0.8,
             opacity: 0,
           },
@@ -205,15 +211,15 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setCircle1({
           position: {
             x: windowWidth - 15,
-            y: 1000,
+            y: 1500,
             scale: 2,
           },
           fill: "brand.highlight",
         });
         setHalfCircle1({
           position: {
-            x: windowWidth >= 992 ? 370 : 170,
-            y: windowWidth >= 992 ? 1190 : 1100,
+            x: realWindowWidth > 2000 ? 188 : windowWidth >= 992 ? 370 : 170,
+            y: realWindowWidth > 2000 ? 1662 : windowWidth >= 992 ? 1190 : 1100,
             scale: 1,
             rotate: 110,
             opacity: 0,
@@ -222,8 +228,8 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         });
         setHalfCircle2({
           position: {
-            x: windowWidth >= 992 ? 222 : 22,
-            y: windowWidth >= 992 ? 1178 : 1088,
+            x: realWindowWidth > 2000 ? 40 : windowWidth >= 992 ? 222 : 22,
+            y: realWindowWidth > 2000 ? 1650 : windowWidth >= 992 ? 1178 : 1088,
             scale: 1,
             rotate: 10,
             opacity: 1,
@@ -231,8 +237,8 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         });
         setTinyArc1({
           position: {
-            x: windowWidth >= 992 ? 233 : 33,
-            y: windowWidth >= 992 ? 1295 : 1195,
+            x: realWindowWidth > 2000 ? 51 : windowWidth >= 992 ? 233 : 33,
+            y: realWindowWidth > 2000 ? 1767 : windowWidth >= 992 ? 1295 : 1195,
             scale: 0.8,
             rotate: 0,
             opacity: 1,
@@ -242,8 +248,13 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         });
         setMathias({
           position: {
-            x: windowWidth >= 992 ? windowWidth - 370 : windowWidth - 170,
-            y: windowWidth >= 992 ? 1330 : 1300,
+            x:
+              realWindowWidth > 2000
+                ? windowWidth - 188
+                : windowWidth >= 992
+                ? windowWidth - 370
+                : windowWidth - 170,
+            y: realWindowWidth > 2000 ? 1990 : windowWidth >= 992 ? 1330 : 1300,
             scale: 0.8,
             opacity: 1,
           },
@@ -251,8 +262,8 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         });
         setLudovic({
           position: {
-            x: windowWidth >= 992 ? 210 : 10,
-            y: windowWidth >= 992 ? 1510 : 1530,
+            x: realWindowWidth > 2000 ? 28 : windowWidth >= 992 ? 210 : 10,
+            y: realWindowWidth > 2000 ? 2320 : windowWidth >= 992 ? 1510 : 1530,
             scale: 0.8,
             opacity: 1,
           },
@@ -291,7 +302,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setMathias({
           position: {
             x: windowWidth,
-            y: windowWidth >= 992 ? 1330 : 1300,
+            y: realWindowWidth > 2000 ? 1990 : windowWidth >= 992 ? 1330 : 1300,
             scale: 0.8,
             opacity: 0,
           },
@@ -300,7 +311,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setLudovic({
           position: {
             x: -200,
-            y: windowWidth >= 992 ? 1510 : 1530,
+            y: realWindowWidth > 2000 ? 2320 : windowWidth >= 992 ? 1510 : 1530,
             scale: 0.8,
             opacity: 0,
           },

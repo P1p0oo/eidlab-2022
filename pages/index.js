@@ -13,20 +13,34 @@ import { useScroll, useTransform } from "framer-motion";
 
 export default function Home() {
   const [windowWidth, setWindowWidth] = useState(undefined);
+  const [realWindowWidth, setRealWindowWidth] = useState(undefined);
 
   const [pagePosition, setPagePosition] = useState(0);
   const [bgColor, setBgColor] = useState("brand.bodyInvert");
 
   const [isDesktop] = useMediaQuery("(min-width: 1024px)");
+  const [pagePositionPercentages, setPagePositionPercentages] =
+    useState(undefined);
 
   useEffect(() => {
     if (typeof window !== undefined) {
       window.addEventListener("resize", (e) => {
+        setRealWindowWidth(window.innerWidth);
         setWindowWidth(window.innerWidth >= 1680 ? 1680 : window.innerWidth);
       });
+      setRealWindowWidth(window.innerWidth);
       setWindowWidth(window.innerWidth >= 1680 ? 1680 : window.innerWidth);
     }
   }, []);
+
+  useEffect(() => {
+    if (!window) return;
+    setPagePositionPercentages([
+      realWindowWidth > 2000 ? 0.12 : 0.1,
+      realWindowWidth > 2000 ? 0.35 : 0.25,
+      0.9,
+    ]);
+  }, [realWindowWidth]);
 
   const { scrollYProgress } = useScroll();
 
@@ -35,20 +49,20 @@ export default function Home() {
   });
 
   scrollYProgress.onChange((last) => {
-    if (!last || !windowWidth) {
+    if (!last || !windowWidth || !pagePositionPercentages) {
       return;
     }
-    if (last < 0.1) {
+    if (last < pagePositionPercentages[0]) {
       setPagePosition(0);
       setBgColor("brand.bodyInvert");
       return;
     }
-    if (last < 0.25) {
+    if (last < pagePositionPercentages[1]) {
       setPagePosition(1);
       setBgColor("brand.secondary");
       return;
     }
-    if (last < 0.9) {
+    if (last < pagePositionPercentages[2]) {
       setPagePosition(2);
       setBgColor("brand.body");
       return;
@@ -76,6 +90,7 @@ export default function Home() {
       {windowWidth && (
         <Pieces
           windowWidth={windowWidth}
+          realWindowWidth={realWindowWidth}
           pagePosition={pagePosition}
           isDesktop={isDesktop}
           paralax={paralax}
