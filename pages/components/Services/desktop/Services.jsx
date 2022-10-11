@@ -1,4 +1,4 @@
-import { Flex, Heading, List, ListItem } from "@chakra-ui/react";
+import { Container, Flex, Heading, List, ListItem } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Arrow from "../../../svg/Arrow";
 import Service from "./Service";
@@ -51,47 +51,49 @@ const Services = () => {
   ];
 
   return (
-    <Flex
-      height={"100vh"}
-      width={"100%"}
-      direction={"column"}
-      color={"brand.bodyInvert"}
-      justifyContent={"center"}
-      alignItems={"center"}
-      p={20}
-      pt={40}
-    >
-      <Heading as='h2' size={"3xl"} textAlign={"center"}>
-        Je peux vous accompagner sur :
-      </Heading>
-      <Flex mt={20} width={"100%"} height={"100%"}>
-        <List fontWeight={"semibold"} width={"50%"}>
-          {servicesTitles.map((serviceTitle, index) => {
-            return (
-              <ServiceTitle
-                key={index}
-                select={index}
-                title={serviceTitle}
-                setSelectedService={setSelectedService}
-                selectedService={selectedService}
-              ></ServiceTitle>
-            );
-          })}
-        </List>
-        <Flex position={"relative"} width={"50%"}>
-          {services.map((service, index) => {
-            return (
-              <ServiceContent
-                key={index}
-                service={service}
-                select={index}
-                selectedService={selectedService}
-              ></ServiceContent>
-            );
-          })}
+    <Container maxW={"container.xxl"}>
+      <Flex
+        height={"100vh"}
+        width={"100%"}
+        direction={"column"}
+        color={"brand.bodyInvert"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        p={20}
+        pt={40}
+      >
+        <Heading as='h2' size={"3xl"} textAlign={"center"}>
+          Je peux vous accompagner sur :
+        </Heading>
+        <Flex mt={20} width={"100%"} height={"100%"}>
+          <List fontWeight={"semibold"} width={"50%"}>
+            {servicesTitles.map((serviceTitle, index) => {
+              return (
+                <ServiceTitle
+                  key={index}
+                  select={index}
+                  title={serviceTitle}
+                  setSelectedService={setSelectedService}
+                  selectedService={selectedService}
+                ></ServiceTitle>
+              );
+            })}
+          </List>
+          <Flex position={"relative"} width={"50%"}>
+            {services.map((service, index) => {
+              return (
+                <ServiceContent
+                  key={index}
+                  service={service}
+                  select={index}
+                  selectedService={selectedService}
+                ></ServiceContent>
+              );
+            })}
+          </Flex>
         </Flex>
       </Flex>
-    </Flex>
+    </Container>
   );
 };
 

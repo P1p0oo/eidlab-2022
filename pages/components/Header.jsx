@@ -1,4 +1,4 @@
-import { Flex, Heading, Image, Link } from "@chakra-ui/react";
+import { Container, Flex, Heading, Image, Link } from "@chakra-ui/react";
 
 const Header = ({ bgColor }) => {
   return (
@@ -11,6 +11,7 @@ const Header = ({ bgColor }) => {
       position={"fixed"}
       width={"100%"}
       zIndex={99}
+      maxW={"container.xxl"}
     >
       <Link href='#'>
         <Flex alignItems={"end"} position={"relative"}>

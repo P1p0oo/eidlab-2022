@@ -1,4 +1,4 @@
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Container, Flex, Heading, Text } from "@chakra-ui/react";
 import Circle from "../svg/Circle";
 import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -105,7 +105,6 @@ const Team = ({ pagePosition, isDesktop }) => {
       >
         L{"'"}équipe
       </Heading>
-
       <AnimatePresence>
         {pagePosition == 1 && (
           <motion.div

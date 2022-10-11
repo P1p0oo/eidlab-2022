@@ -1,6 +1,11 @@
 import { extendTheme, textDecoration } from "@chakra-ui/react";
 
 const theme = extendTheme({
+  sizes: {
+    container: {
+      xxl: "1680px",
+    },
+  },
   colors: {
     brand: {
       primary: "#952AFD", //purple

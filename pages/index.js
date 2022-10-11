@@ -1,4 +1,4 @@
-import { Box, useMediaQuery } from "@chakra-ui/react";
+import { Box, Flex, useMediaQuery } from "@chakra-ui/react";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Contact from "./components/Contact";
@@ -22,9 +22,9 @@ export default function Home() {
   useEffect(() => {
     if (typeof window !== undefined) {
       window.addEventListener("resize", (e) => {
-        setWindowWidth(window.innerWidth);
+        setWindowWidth(window.innerWidth >= 1680 ? 1680 : window.innerWidth);
       });
-      setWindowWidth(window.innerWidth);
+      setWindowWidth(window.innerWidth >= 1680 ? 1680 : window.innerWidth);
     }
   }, []);
 
@@ -63,6 +63,7 @@ export default function Home() {
       position={"relative"}
       backgroundColor={bgColor}
       transitionDuration={"1s"}
+      overflow={"hidden"}
     >
       <Head>
         <title>Eid Lab</title>
@@ -81,7 +82,7 @@ export default function Home() {
         ></Pieces>
       )}
 
-      <Box position={"relative"}>
+      <Flex direction={"column"} alignItems={"center"} position={"relative"}>
         <Header bgColor={bgColor} pagePosition={pagePosition}></Header>
         <Intro></Intro>
         <Team pagePosition={pagePosition} isDesktop={isDesktop}></Team>
@@ -93,7 +94,7 @@ export default function Home() {
 
         <Projects></Projects>
         <Contact></Contact>
-      </Box>
+      </Flex>
     </Box>
   );
 }

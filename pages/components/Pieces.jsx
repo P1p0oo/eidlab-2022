@@ -1,4 +1,4 @@
-import { Box, Image } from "@chakra-ui/react";
+import { Box, Container, Flex, Image } from "@chakra-ui/react";
 import Arc from "../svg/Arc";
 import Circle from "../svg/Circle";
 import HalfCircle from "../svg/HalfCircle";
@@ -357,225 +357,227 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
   }, [pagePosition, windowWidth, bodyHeight]);
 
   return (
-    <Box
-      position={"absolute"}
-      zIndex={0}
-      width={"100%"}
-      height={"100%"}
-      ref={ref}
-      overflowY={"hidden"}
-    >
-      <motion.div style={{ y: paralax }}>
-        {!bodyHeight ? (
-          ""
-        ) : (
-          <motion.div
-            initial={{ transform: "scale(2)", opacity: 0 }}
-            animate={{ transform: "scale(1)", opacity: 1 }}
-            exit={{ transform: "scale(2)", opacity: 0 }}
-            transition={{ type: "spring", delay: 0.5, duration: 4 }}
-          >
-            <Circle
-              position={"absolute"}
-              width={"160px"}
-              height={"160px"}
-              top={"120.16px"}
-              left={{ base: "-80.66px", lg: "100px" }}
-              fill={"brand.secondary"}
-              transform={`scale(${scaling})`}
-            ></Circle>
+    <Flex justifyContent={"center"}>
+      <Container
+        maxW={"container.xxl"}
+        position={"absolute"}
+        zIndex={0}
+        width={"100%"}
+        height={"100%"}
+        ref={ref}
+      >
+        <motion.div style={{ y: paralax }}>
+          {!bodyHeight ? (
+            ""
+          ) : (
             <motion.div
-              style={{ position: "absolute" }}
-              animate={tinyArc1.position}
-              transition={{
-                type: "spring",
-                stiffness: 50,
-                duration: 0.5,
-                delay: tinyArc1.delay,
-              }}
+              initial={{ transform: "scale(2)", opacity: 0 }}
+              animate={{ transform: "scale(1)", opacity: 1 }}
+              exit={{ transform: "scale(2)", opacity: 0 }}
+              transition={{ type: "spring", delay: 0.5, duration: 4 }}
             >
-              <TinyArc
-                fill={"brand.primary"}
+              <Circle
+                position={"absolute"}
+                width={"160px"}
+                height={"160px"}
+                top={"120.16px"}
+                left={{ base: "-80.66px", lg: "100px" }}
+                fill={"brand.secondary"}
                 transform={`scale(${scaling})`}
+              ></Circle>
+              <motion.div
+                style={{ position: "absolute" }}
+                animate={tinyArc1.position}
+                transition={{
+                  type: "spring",
+                  stiffness: 50,
+                  duration: 0.5,
+                  delay: tinyArc1.delay,
+                }}
+              >
+                <TinyArc
+                  fill={"brand.primary"}
+                  transform={`scale(${scaling})`}
+                  position={"absolute"}
+                  width={"101px"}
+                  height={"69px"}
+                ></TinyArc>
+              </motion.div>
+              <motion.div
+                style={{ position: "absolute" }}
+                animate={halfCircle1.position}
+                transition={{
+                  type: "spring",
+                  stiffness: 50,
+                  duration: 0.5,
+                }}
+              >
+                <HalfCircle
+                  position={"absolute"}
+                  width={"150px"}
+                  height={"150px"}
+                  fill={"brand.primary"}
+                  transform={`scale(${scaling})`}
+                ></HalfCircle>
+              </motion.div>
+              <motion.div
+                style={{ position: "absolute", width: "150px" }}
+                animate={halfCircle2.position}
+                transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
+              >
+                <Image
+                  src='/images/halfCirclePhilippe.png'
+                  width={"150px"}
+                  height={"150px"}
+                  position={"absolute"}
+                  transform={`scale(${scaling})`}
+                  alt='philippe'
+                />
+              </motion.div>
+
+              <motion.div
+                style={{ position: "absolute" }}
+                animate={mathias.position}
+                transition={{
+                  type: "spring",
+                  stiffness: 50,
+                  duration: 0.5,
+                  delay: mathias.delay,
+                }}
+              >
+                <Image
+                  src='/images/mathias.jpg'
+                  width={"150px"}
+                  height={"150px"}
+                  borderRadius={100}
+                  alt={"mathias"}
+                  transform={`scale(${scaling})`}
+                />
+              </motion.div>
+              <motion.div
+                style={{ position: "absolute" }}
+                animate={ludovic.position}
+                transition={{
+                  type: "spring",
+                  stiffness: 50,
+                  duration: 0.5,
+                  delay: ludovic.delay,
+                }}
+              >
+                <Image
+                  src='/images/ludovic.jpg'
+                  width={"150px"}
+                  height={"150px"}
+                  borderRadius={100}
+                  transform={`scale(${scaling})`}
+                  alt={"ludovic"}
+                />
+              </motion.div>
+
+              <motion.div
+                style={{ position: "absolute" }}
+                animate={circle1.position}
+                transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
+              >
+                <Circle
+                  transform={`scale(${scaling})`}
+                  width={"90px"}
+                  height={"90px"}
+                  fill={circle1.fill}
+                ></Circle>
+              </motion.div>
+              <TinyArc
                 position={"absolute"}
                 width={"101px"}
                 height={"69px"}
+                fill={"brand.highlight"}
+                top={"525px"}
+                right={"17"}
+                transform={`rotate(215deg) scale(${scaling})`}
               ></TinyArc>
-            </motion.div>
-            <motion.div
-              style={{ position: "absolute" }}
-              animate={halfCircle1.position}
-              transition={{
-                type: "spring",
-                stiffness: 50,
-                duration: 0.5,
-              }}
-            >
+              <Arc
+                position={"absolute"}
+                width={"175px"}
+                height={"175px"}
+                fill={"brand.tertiary"}
+                top={"627px"}
+                left={"-30px"}
+                transform={`scale(${scaling})`}
+              ></Arc>
+              <TinyArc
+                position={"absolute"}
+                width={"101px"}
+                height={"69px"}
+                fill={"brand.secondary"}
+                top={{ base: "2340px", lg: "2600px" }}
+                left={{ base: "-5", lg: "10" }}
+                transform={`rotate(40deg) scale(${scaling})`}
+              ></TinyArc>
+              <Circle
+                position={"absolute"}
+                width={"170px"}
+                height={"170px"}
+                fill={"brand.primary"}
+                top={{ base: "2950px", md: "3150px" }}
+                right={"-120px"}
+                transform={`scale(${scaling})`}
+              ></Circle>
               <HalfCircle
                 position={"absolute"}
+                width={"130px"}
+                height={"130px"}
+                fill={"brand.tertiary"}
+                top={{ base: "2850px", md: "3050px" }}
+                left={"-40px"}
+                transform={`rotate(200deg) scale(${scaling})`}
+              ></HalfCircle>
+              <TinyArc
+                position={"absolute"}
+                width={"100px"}
+                height={"100px"}
+                fill={"brand.tertiary"}
+                top={{ base: "3540px", md: "3780px" }}
+                right={{ base: "0px", lg: "70px" }}
+                transform={`rotate(40deg) scale(${scaling})`}
+              ></TinyArc>
+              <motion.div
+                style={{ position: "absolute" }}
+                animate={circle2.position}
+                transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
+              >
+                <Circle
+                  width={"200px"}
+                  height={"200px"}
+                  fill={circle2.fill}
+                  transform={`scale(${scaling})`}
+                ></Circle>
+              </motion.div>
+              <motion.div
+                style={{ position: "absolute" }}
+                animate={arc1.position}
+                transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
+              >
+                <Arc
+                  transform={`scale(${scaling})`}
+                  width={"100px"}
+                  height={"100px"}
+                  fill={arc1.fill}
+                ></Arc>
+              </motion.div>
+              <HalfCircle
+                position={"absolute"}
+                top={{ base: "4800px", md: "5200px", lg: "5100px" }}
+                right={{ base: "30px", lg: "300px" }}
                 width={"150px"}
                 height={"150px"}
-                fill={"brand.primary"}
+                fill={"brand.highlight"}
                 transform={`scale(${scaling})`}
               ></HalfCircle>
             </motion.div>
-            <motion.div
-              style={{ position: "absolute", width: "150px" }}
-              animate={halfCircle2.position}
-              transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
-            >
-              <Image
-                src='/images/halfCirclePhilippe.png'
-                width={"150px"}
-                height={"150px"}
-                position={"absolute"}
-                transform={`scale(${scaling})`}
-                alt='philippe'
-              />
-            </motion.div>
-
-            <motion.div
-              style={{ position: "absolute" }}
-              animate={mathias.position}
-              transition={{
-                type: "spring",
-                stiffness: 50,
-                duration: 0.5,
-                delay: mathias.delay,
-              }}
-            >
-              <Image
-                src='/images/mathias.jpg'
-                width={"150px"}
-                height={"150px"}
-                borderRadius={100}
-                alt={"mathias"}
-                transform={`scale(${scaling})`}
-              />
-            </motion.div>
-            <motion.div
-              style={{ position: "absolute" }}
-              animate={ludovic.position}
-              transition={{
-                type: "spring",
-                stiffness: 50,
-                duration: 0.5,
-                delay: ludovic.delay,
-              }}
-            >
-              <Image
-                src='/images/ludovic.jpg'
-                width={"150px"}
-                height={"150px"}
-                borderRadius={100}
-                transform={`scale(${scaling})`}
-                alt={"ludovic"}
-              />
-            </motion.div>
-
-            <motion.div
-              style={{ position: "absolute" }}
-              animate={circle1.position}
-              transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
-            >
-              <Circle
-                transform={`scale(${scaling})`}
-                width={"90px"}
-                height={"90px"}
-                fill={circle1.fill}
-              ></Circle>
-            </motion.div>
-            <TinyArc
-              position={"absolute"}
-              width={"101px"}
-              height={"69px"}
-              fill={"brand.highlight"}
-              top={"525px"}
-              right={"17"}
-              transform={`rotate(215deg) scale(${scaling})`}
-            ></TinyArc>
-            <Arc
-              position={"absolute"}
-              width={"175px"}
-              height={"175px"}
-              fill={"brand.tertiary"}
-              top={"627px"}
-              left={"-30px"}
-              transform={`scale(${scaling})`}
-            ></Arc>
-            <TinyArc
-              position={"absolute"}
-              width={"101px"}
-              height={"69px"}
-              fill={"brand.secondary"}
-              top={{ base: "2340px", lg: "2600px" }}
-              left={{ base: "-5", lg: "10" }}
-              transform={`rotate(40deg) scale(${scaling})`}
-            ></TinyArc>
-            <Circle
-              position={"absolute"}
-              width={"170px"}
-              height={"170px"}
-              fill={"brand.primary"}
-              top={{ base: "2950px", md: "3150px" }}
-              right={"-120px"}
-              transform={`scale(${scaling})`}
-            ></Circle>
-            <HalfCircle
-              position={"absolute"}
-              width={"130px"}
-              height={"130px"}
-              fill={"brand.tertiary"}
-              top={{ base: "2850px", md: "3050px" }}
-              left={"-40px"}
-              transform={`rotate(200deg) scale(${scaling})`}
-            ></HalfCircle>
-            <TinyArc
-              position={"absolute"}
-              width={"100px"}
-              height={"100px"}
-              fill={"brand.tertiary"}
-              top={{ base: "3540px", md: "3780px" }}
-              right={{ base: "0px", lg: "70px" }}
-              transform={`rotate(40deg) scale(${scaling})`}
-            ></TinyArc>
-            <motion.div
-              style={{ position: "absolute" }}
-              animate={circle2.position}
-              transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
-            >
-              <Circle
-                width={"200px"}
-                height={"200px"}
-                fill={circle2.fill}
-                transform={`scale(${scaling})`}
-              ></Circle>
-            </motion.div>
-            <motion.div
-              style={{ position: "absolute" }}
-              animate={arc1.position}
-              transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
-            >
-              <Arc
-                transform={`scale(${scaling})`}
-                width={"100px"}
-                height={"100px"}
-                fill={arc1.fill}
-              ></Arc>
-            </motion.div>
-            <HalfCircle
-              position={"absolute"}
-              top={{ base: "4800px", md: "5200px", lg: "5100px" }}
-              right={{ base: "30px", lg: "300px" }}
-              width={"150px"}
-              height={"150px"}
-              fill={"brand.highlight"}
-              transform={`scale(${scaling})`}
-            ></HalfCircle>
-          </motion.div>
-        )}
-      </motion.div>
-    </Box>
+          )}
+        </motion.div>
+      </Container>
+    </Flex>
   );
 };
 
