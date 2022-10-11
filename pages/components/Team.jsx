@@ -1,9 +1,9 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import Circle from "../svg/Circle";
-import { motion, AnimatePresence } from "framer-motion";
-import { useRef } from "react";
+import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
-const Team = ({ pagePosition }) => {
+const Team = ({ pagePosition, isDesktop }) => {
   const techList = [
     "HTML",
     "CSS",
@@ -61,9 +61,31 @@ const Team = ({ pagePosition }) => {
     "WORDPRESS",
   ];
 
-  const techContainer = useRef();
+  const bannerControls = useAnimationControls();
 
-  const bannerSize = `${(techList.length - 5) * 35}%`;
+  const [bannerSize, setBannerSize] = useState(undefined);
+  const [bannerMovement, setBannerMovement] = useState(undefined);
+
+  useEffect(() => {
+    setBannerSize(
+      isDesktop
+        ? `${(techList.length - 5) * 15}%`
+        : `${(techList.length - 5) * 35}%`
+    );
+    setBannerMovement(
+      isDesktop
+        ? `-${(techList.length - 16) * 15}%`
+        : `-${(techList.length - 8) * 35}%`
+    );
+  }, [isDesktop]);
+
+  useEffect(() => {
+    if (!bannerSize || !bannerMovement) return;
+    bannerControls.set({ x: "0%" });
+    bannerControls.start({ x: bannerMovement });
+  }, [bannerSize, bannerMovement]);
+
+  const techContainer = useRef();
 
   return (
     <Flex
@@ -125,7 +147,7 @@ const Team = ({ pagePosition }) => {
                 </Text>
               </Flex>
 
-              <Flex direction={"column"} ml={170}>
+              <Flex direction={"column"} ml={170} mb={{ base: 0, lg: 10 }}>
                 <Heading as={"h3"} size={"xl"} color={"brand.primary"}>
                   Ludovic Fayolle
                 </Heading>
@@ -141,33 +163,39 @@ const Team = ({ pagePosition }) => {
         )}
       </AnimatePresence>
 
-      <motion.div
-        initial={{
-          x: "0%",
-        }}
-        animate={{ x: `-${(techList.length - 8) * 35}%` }}
-        transition={{ ease: "linear", duration: 40, repeat: Infinity }}
-      >
-        <Flex
-          justifyContent={"space-around"}
-          width={bannerSize}
-          borderTop={"1px solid"}
-          borderBottom={"1px solid"}
-          borderTopColor={"brand.bodyInvert"}
-          borderBottomColor={"brand.bodyInvert"}
-          pt={7}
-          pb={7}
-          fontSize={"3xl"}
-          color={"brand.bodyInvert"}
-          bg={"brand.primary"}
-          zIndex={1}
-          ref={techContainer}
+      {bannerSize && bannerMovement && (
+        <motion.div
+          initial={{
+            x: "0%",
+          }}
+          animate={bannerControls}
+          transition={{
+            ease: "linear",
+            duration: 40,
+            repeat: Infinity,
+          }}
         >
-          {techList.map((tech, index) => {
-            return <Text key={index}>{tech}</Text>;
-          })}
-        </Flex>
-      </motion.div>
+          <Flex
+            justifyContent={"space-around"}
+            width={bannerSize}
+            borderTop={"1px solid"}
+            borderBottom={"1px solid"}
+            borderTopColor={"brand.bodyInvert"}
+            borderBottomColor={"brand.bodyInvert"}
+            pt={7}
+            pb={7}
+            fontSize={"3xl"}
+            color={"brand.bodyInvert"}
+            bg={"brand.primary"}
+            zIndex={1}
+            ref={techContainer}
+          >
+            {techList.map((tech, index) => {
+              return <Text key={index}>{tech}</Text>;
+            })}
+          </Flex>
+        </motion.div>
+      )}
     </Flex>
   );
 };

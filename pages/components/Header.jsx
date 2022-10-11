@@ -12,34 +12,36 @@ const Header = ({ bgColor }) => {
       width={"100%"}
       zIndex={99}
     >
-      <Flex alignItems={"end"} position={"relative"}>
-        <Image
-          alt='logo'
-          src={"/images/logo.png"}
-          width={50}
-          transitionDuration={"1s"}
-          opacity={bgColor == "brand.primary" ? "0%" : "100%"}
-        />
-        <Image
-          alt='black-logo'
-          src={"/images/blackLogo.png"}
-          width={50}
-          transitionDuration={"1s"}
-          opacity={bgColor == "brand.primary" ? "100%" : "0%"}
-          position={"absolute"}
-        />
-        <Heading
-          as={"h1"}
-          size={"lg"}
-          mb={0.25}
-          ml={3}
-          fontWeight={"bold"}
-          color={bgColor == "brand.body" ? "brand.bodyInvert" : "brand.body"}
-          transitionDuration={"1s"}
-        >
-          Eid Lab
-        </Heading>
-      </Flex>
+      <Link href='#'>
+        <Flex alignItems={"end"} position={"relative"}>
+          <Image
+            alt='logo'
+            src={"/images/logo.png"}
+            width={50}
+            transitionDuration={"1s"}
+            opacity={bgColor == "brand.primary" ? "0%" : "100%"}
+          />
+          <Image
+            alt='black-logo'
+            src={"/images/blackLogo.png"}
+            width={50}
+            transitionDuration={"1s"}
+            opacity={bgColor == "brand.primary" ? "100%" : "0%"}
+            position={"absolute"}
+          />
+          <Heading
+            as={"h1"}
+            size={"lg"}
+            mb={0.25}
+            ml={3}
+            fontWeight={"bold"}
+            color={bgColor == "brand.body" ? "brand.bodyInvert" : "brand.body"}
+            transitionDuration={"1s"}
+          >
+            Eid Lab
+          </Heading>
+        </Flex>
+      </Link>
       <Link mb={0.25} href={"#contact"}>
         <Heading
           as={"h2"}

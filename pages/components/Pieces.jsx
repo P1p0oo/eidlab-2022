@@ -243,7 +243,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setMathias({
           position: {
             x: windowWidth >= 992 ? windowWidth - 370 : windowWidth - 170,
-            y: windowWidth >= 992 ? 1350 : 1300,
+            y: windowWidth >= 992 ? 1330 : 1300,
             scale: 0.8,
             opacity: 1,
           },
@@ -252,7 +252,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setLudovic({
           position: {
             x: windowWidth >= 992 ? 210 : 10,
-            y: 1530,
+            y: windowWidth >= 992 ? 1510 : 1530,
             scale: 0.8,
             opacity: 1,
           },
@@ -291,7 +291,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setMathias({
           position: {
             x: windowWidth,
-            y: windowWidth >= 992 ? 1350 : 1300,
+            y: windowWidth >= 992 ? 1330 : 1300,
             scale: 0.8,
             opacity: 0,
           },
@@ -300,7 +300,7 @@ const Pieces = ({ windowWidth, pagePosition, isDesktop, paralax }) => {
         setLudovic({
           position: {
             x: -200,
-            y: 1530,
+            y: windowWidth >= 992 ? 1510 : 1530,
             scale: 0.8,
             opacity: 0,
           },
