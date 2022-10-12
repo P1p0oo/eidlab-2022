@@ -1,6 +1,6 @@
 import { Box, Flex, useMediaQuery } from "@chakra-ui/react";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
 import Intro from "./components/Intro";
@@ -21,6 +21,12 @@ export default function Home() {
   const [isDesktop] = useMediaQuery("(min-width: 1024px)");
   const [pagePositionPercentages, setPagePositionPercentages] =
     useState(undefined);
+
+  const [piecesTagets, setPiecesTargets] = useState([
+    useRef(),
+    useRef(),
+    useRef(),
+  ]);
 
   useEffect(() => {
     if (typeof window !== undefined) {
@@ -100,7 +106,12 @@ export default function Home() {
       <Flex direction={"column"} alignItems={"center"} position={"relative"}>
         <Header bgColor={bgColor} pagePosition={pagePosition}></Header>
         <Intro></Intro>
-        <Team pagePosition={pagePosition} isDesktop={isDesktop}></Team>
+        <Team
+          pagePosition={pagePosition}
+          isDesktop={isDesktop}
+          piecesTagets={piecesTagets}
+          setPiecesTargets={setPiecesTargets}
+        ></Team>
         {isDesktop ? (
           <ServicesDesktop></ServicesDesktop>
         ) : (

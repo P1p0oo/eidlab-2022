@@ -254,7 +254,7 @@ const Pieces = ({
                 ? windowWidth - 418
                 : windowWidth >= 992
                 ? windowWidth - 420
-                : windowWidth - 170,
+                : windowWidth - 190,
             y: realWindowWidth > 2000 ? 1990 : windowWidth >= 992 ? 1330 : 1300,
             scale: 0.8,
             opacity: 1,

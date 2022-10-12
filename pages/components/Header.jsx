@@ -21,7 +21,6 @@ const Header = ({ bgColor }) => {
             src={"/images/logo.png"}
             width={50}
             height={45}
-            transitionDuration={"1s"}
             opacity={bgColor == "brand.primary" ? "0%" : "100%"}
             style={{
               transitionDuration: "1s",
