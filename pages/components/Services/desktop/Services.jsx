@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Arrow from "../../../svg/Arrow";
 import Service from "./Service";
 import ServiceContent from "./ServiceContent";
-import ServiceTitle from "./ServiceTitle";
 
 const Services = () => {
   const [selectedService, setSelectedService] = useState(0);
@@ -67,30 +66,39 @@ const Services = () => {
         </Heading>
         <Flex mt={20} width={"100%"} height={"100%"}>
           <List fontWeight={"semibold"} width={"50%"}>
-            {servicesTitles.map((serviceTitle, index) => {
-              return (
-                <ServiceTitle
-                  key={index}
-                  select={index}
-                  title={serviceTitle}
-                  setSelectedService={setSelectedService}
-                  selectedService={selectedService}
-                ></ServiceTitle>
-              );
-            })}
+            {servicesTitles.map((serviceTitle, index) => (
+              <ListItem
+                key={index}
+                transitionDuration={"0.25s"}
+                fontSize={selectedService == index ? "4xl" : "2xl"}
+                color={selectedService == index ? "brand.secondary" : "brand.bodyInvert"}
+                cursor={"pointer"}
+                mt={4}
+                onMouseEnter={() => {
+                  setSelectedService(index);
+                }}
+              >
+                {serviceTitle}{" "}
+                {selectedService == index ? (
+                  <Arrow fill={"brand.secondary"} ml={3} height={6}></Arrow>
+                ) : (
+                  ""
+                )}
+              </ListItem>
+            ))}
           </List>
-          <Flex position={"relative"} width={"50%"}>
-            {services.map((service, index) => {
-              return (
-                <ServiceContent
-                  key={index}
-                  service={service}
-                  select={index}
-                  selectedService={selectedService}
-                ></ServiceContent>
-              );
-            })}
-          </Flex>
+          {services && <Flex position={"relative"} width={"50%"}>
+            {services.map((service, index) =>
+            (
+              <ServiceContent
+                key={index}
+                service={service}
+                select={index}
+                selectedService={selectedService}
+              ></ServiceContent>
+            )
+            )}
+          </Flex>}
         </Flex>
       </Flex>
     </Container>

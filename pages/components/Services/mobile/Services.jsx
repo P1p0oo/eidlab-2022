@@ -46,7 +46,7 @@ const Services = () => {
     servicesContainer.current.scrollLeft =
       (selectedService * servicesContainer.current.scrollWidth) /
       services.length;
-  }, [selectedService]);
+  }, [selectedService, services.length]);
 
   return (
     <Flex

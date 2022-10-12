@@ -1,5 +1,4 @@
-import { Container, Flex, Heading, Text } from "@chakra-ui/react";
-import Circle from "../svg/Circle";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -77,13 +76,13 @@ const Team = ({ pagePosition, isDesktop }) => {
         ? `-${(techList.length - 16) * 15}%`
         : `-${(techList.length - 8) * 35}%`
     );
-  }, [isDesktop]);
+  }, [isDesktop, techList.length]);
 
   useEffect(() => {
     if (!bannerSize || !bannerMovement) return;
     bannerControls.set({ x: "0%" });
     bannerControls.start({ x: bannerMovement });
-  }, [bannerSize, bannerMovement]);
+  }, [bannerSize, bannerMovement, bannerControls]);
 
   const techContainer = useRef();
 

@@ -2,6 +2,7 @@ import { Flex, Image, Text } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const ServiceContent = ({ service, select, selectedService }) => {
+  if (!service) return null;
   return (
     <Flex
       direction={"column"}

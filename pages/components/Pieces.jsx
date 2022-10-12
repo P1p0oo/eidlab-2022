@@ -122,8 +122,8 @@ const Pieces = ({
           windowWidth >= 992
             ? bodyHeight - 1500
             : windowWidth >= 768
-            ? bodyHeight - 1650
-            : bodyHeight - 1000,
+              ? bodyHeight - 1650
+              : bodyHeight - 1000,
         scale: 0.4,
       },
       fill: "brand.secondary",
@@ -136,8 +136,8 @@ const Pieces = ({
           windowWidth >= 992
             ? bodyHeight - 1200
             : windowWidth >= 768
-            ? bodyHeight - 1530
-            : bodyHeight - 1070,
+              ? bodyHeight - 1530
+              : bodyHeight - 1070,
         scale: 1.2,
       },
       fill: "brand.secondary",
@@ -252,8 +252,8 @@ const Pieces = ({
               realWindowWidth > 2000
                 ? windowWidth - 218
                 : windowWidth >= 992
-                ? windowWidth - 420
-                : windowWidth - 170,
+                  ? windowWidth - 420
+                  : windowWidth - 170,
             y: realWindowWidth > 2000 ? 1990 : windowWidth >= 992 ? 1330 : 1300,
             scale: 0.8,
             opacity: 1,
@@ -324,8 +324,8 @@ const Pieces = ({
               windowWidth >= 992
                 ? bodyHeight - 1500
                 : windowWidth >= 768
-                ? bodyHeight - 1650
-                : bodyHeight - 1000,
+                  ? bodyHeight - 1650
+                  : bodyHeight - 1000,
             scale: 0.4,
           },
           fill: "brand.secondary",
@@ -337,8 +337,8 @@ const Pieces = ({
               windowWidth >= 992
                 ? bodyHeight - 1200
                 : windowWidth >= 768
-                ? bodyHeight - 1530
-                : bodyHeight - 1070,
+                  ? bodyHeight - 1530
+                  : bodyHeight - 1070,
             scale: 1.2,
           },
           fill: "brand.secondary",
@@ -365,7 +365,7 @@ const Pieces = ({
       default:
         break;
     }
-  }, [pagePosition, windowWidth, bodyHeight]);
+  }, [pagePosition, windowWidth, bodyHeight, isDesktop, realWindowWidth]);
 
   return (
     <Flex justifyContent={"center"}>
