@@ -39,20 +39,21 @@ const Project = ({ image, techs, title, link, revert }) => {
           m={{ base: 0, lg: 10 }}
           alignItems={{ lg: revert ? "end" : "start" }}
         >
-          {techs && <List>
-            {techs.map((tech, index) => (
-              <ListItem
-                fontSize={"xl"}
-                key={index}
-                display={"inline-block"}
-                mr={{ base: 5, lg: revert ? 0 : 5 }}
-                ml={{ base: 0, lg: revert ? 5 : 0 }}
-              >
-                {tech}
-              </ListItem>
-            )
-            )}
-          </List>}
+          {techs && (
+            <List>
+              {techs.map((tech, index) => (
+                <ListItem
+                  fontSize={"xl"}
+                  key={index}
+                  display={"inline-block"}
+                  mr={{ base: 5, lg: revert ? 0 : 5 }}
+                  ml={{ base: 0, lg: revert ? 5 : 0 }}
+                >
+                  {tech}
+                </ListItem>
+              ))}
+            </List>
+          )}
           <Heading as={"h3"} size={"2xl"} mt={2}>
             {title}
           </Heading>

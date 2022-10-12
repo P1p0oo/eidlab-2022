@@ -1,10 +1,11 @@
-import { Box, Container, Flex, Image } from "@chakra-ui/react";
+import { Box, Container, Flex } from "@chakra-ui/react";
 import Arc from "../svg/Arc";
 import Circle from "../svg/Circle";
 import HalfCircle from "../svg/HalfCircle";
 import TinyArc from "../svg/TinyArc";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const Pieces = ({
   windowWidth,
@@ -122,8 +123,8 @@ const Pieces = ({
           windowWidth >= 992
             ? bodyHeight - 1500
             : windowWidth >= 768
-              ? bodyHeight - 1650
-              : bodyHeight - 1000,
+            ? bodyHeight - 1650
+            : bodyHeight - 1000,
         scale: 0.4,
       },
       fill: "brand.secondary",
@@ -136,8 +137,8 @@ const Pieces = ({
           windowWidth >= 992
             ? bodyHeight - 1200
             : windowWidth >= 768
-              ? bodyHeight - 1530
-              : bodyHeight - 1070,
+            ? bodyHeight - 1530
+            : bodyHeight - 1070,
         scale: 1.2,
       },
       fill: "brand.secondary",
@@ -252,8 +253,8 @@ const Pieces = ({
               realWindowWidth > 2000
                 ? windowWidth - 218
                 : windowWidth >= 992
-                  ? windowWidth - 420
-                  : windowWidth - 170,
+                ? windowWidth - 420
+                : windowWidth - 170,
             y: realWindowWidth > 2000 ? 1990 : windowWidth >= 992 ? 1330 : 1300,
             scale: 0.8,
             opacity: 1,
@@ -324,8 +325,8 @@ const Pieces = ({
               windowWidth >= 992
                 ? bodyHeight - 1500
                 : windowWidth >= 768
-                  ? bodyHeight - 1650
-                  : bodyHeight - 1000,
+                ? bodyHeight - 1650
+                : bodyHeight - 1000,
             scale: 0.4,
           },
           fill: "brand.secondary",
@@ -337,8 +338,8 @@ const Pieces = ({
               windowWidth >= 992
                 ? bodyHeight - 1200
                 : windowWidth >= 768
-                  ? bodyHeight - 1530
-                  : bodyHeight - 1070,
+                ? bodyHeight - 1530
+                : bodyHeight - 1070,
             scale: 1.2,
           },
           fill: "brand.secondary",
@@ -436,14 +437,14 @@ const Pieces = ({
                 animate={halfCircle2.position}
                 transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
               >
-                <Image
-                  src='/images/halfCirclePhilippe.png'
-                  width={"150px"}
-                  height={"150px"}
-                  position={"absolute"}
-                  transform={`scale(${scaling})`}
-                  alt='philippe'
-                />
+                <Box position={"absolute"} transform={`scale(${scaling})`}>
+                  <Image
+                    src='/images/halfCirclePhilippe.png'
+                    width={"150px"}
+                    height={"150px"}
+                    alt='philippe'
+                  />
+                </Box>
               </motion.div>
 
               <motion.div
@@ -456,14 +457,15 @@ const Pieces = ({
                   delay: mathias.delay,
                 }}
               >
-                <Image
-                  src='/images/mathias.jpg'
-                  width={"150px"}
-                  height={"150px"}
-                  borderRadius={100}
-                  alt={"mathias"}
-                  transform={`scale(${scaling})`}
-                />
+                <Box transform={`scale(${scaling})`}>
+                  <Image
+                    src='/images/mathias.jpg'
+                    width={"150px"}
+                    height={"150px"}
+                    alt={"mathias"}
+                    style={{ borderRadius: 100 }}
+                  />
+                </Box>
               </motion.div>
               <motion.div
                 style={{ position: "absolute" }}
@@ -475,14 +477,15 @@ const Pieces = ({
                   delay: ludovic.delay,
                 }}
               >
-                <Image
-                  src='/images/ludovic.jpg'
-                  width={"150px"}
-                  height={"150px"}
-                  borderRadius={100}
-                  transform={`scale(${scaling})`}
-                  alt={"ludovic"}
-                />
+                <Box transform={`scale(${scaling})`}>
+                  <Image
+                    src='/images/ludovic.jpg'
+                    width={"150px"}
+                    height={"150px"}
+                    style={{ borderRadius: 100 }}
+                    alt={"ludovic"}
+                  />
+                </Box>
               </motion.div>
 
               <motion.div

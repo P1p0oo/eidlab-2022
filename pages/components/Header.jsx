@@ -1,4 +1,5 @@
-import { Container, Flex, Heading, Image, Link } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Link } from "@chakra-ui/react";
+import Image from "next/image";
 
 const Header = ({ bgColor }) => {
   return (
@@ -19,17 +20,26 @@ const Header = ({ bgColor }) => {
             alt='logo'
             src={"/images/logo.png"}
             width={50}
+            height={45}
             transitionDuration={"1s"}
             opacity={bgColor == "brand.primary" ? "0%" : "100%"}
+            style={{
+              transitionDuration: "1s",
+              opacity: bgColor == "brand.primary" ? "0%" : "100%",
+            }}
           />
-          <Image
-            alt='black-logo'
-            src={"/images/blackLogo.png"}
-            width={50}
-            transitionDuration={"1s"}
-            opacity={bgColor == "brand.primary" ? "100%" : "0%"}
-            position={"absolute"}
-          />
+          <Flex position={"absolute"}>
+            <Image
+              alt='black-logo'
+              src={"/images/blackLogo.png"}
+              width={50}
+              height={45}
+              style={{
+                transitionDuration: "1s",
+                opacity: bgColor == "brand.primary" ? "100%" : "0%",
+              }}
+            />
+          </Flex>
           <Heading
             as={"h1"}
             size={"lg"}
