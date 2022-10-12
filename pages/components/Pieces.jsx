@@ -250,9 +250,9 @@ const Pieces = ({
           position: {
             x:
               realWindowWidth > 2000
-                ? windowWidth - 188
+                ? windowWidth - 218
                 : windowWidth >= 992
-                ? windowWidth - 370
+                ? windowWidth - 420
                 : windowWidth - 170,
             y: realWindowWidth > 2000 ? 1990 : windowWidth >= 992 ? 1330 : 1300,
             scale: 0.8,
@@ -274,7 +274,7 @@ const Pieces = ({
         setCircle1({
           position: {
             x: windowWidth >= 992 ? windowWidth - 250 : windowWidth - 80,
-            y: windowWidth >= 992 ? 1870 : 1849,
+            y: realWindowWidth > 2000 ? 2800 : windowWidth >= 992 ? 1870 : 1849,
             scale: 1.8,
           },
           fill: "brand.tertiary",
