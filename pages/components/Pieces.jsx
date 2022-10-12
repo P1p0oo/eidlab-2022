@@ -180,7 +180,7 @@ const Pieces = ({
         });
         setTinyArc1({
           position: {
-            x: realWindowWidth > 2000 ? 98 : windowWidth >= 992 ? 280 : 100,
+            x: realWindowWidth > 2000 ? 298 : windowWidth >= 992 ? 280 : 100,
             y: realWindowWidth > 2000 ? 1687 : 1215,
             scale: 0.8,
             rotate: -60,
@@ -219,7 +219,7 @@ const Pieces = ({
         });
         setHalfCircle1({
           position: {
-            x: realWindowWidth > 2000 ? 188 : windowWidth >= 992 ? 370 : 170,
+            x: realWindowWidth > 2000 ? 388 : windowWidth >= 992 ? 370 : 170,
             y: realWindowWidth > 2000 ? 1662 : windowWidth >= 992 ? 1190 : 1100,
             scale: 1,
             rotate: 110,
@@ -229,7 +229,7 @@ const Pieces = ({
         });
         setHalfCircle2({
           position: {
-            x: realWindowWidth > 2000 ? 40 : windowWidth >= 992 ? 222 : 22,
+            x: realWindowWidth > 2000 ? 240 : windowWidth >= 992 ? 222 : 22,
             y: realWindowWidth > 2000 ? 1650 : windowWidth >= 992 ? 1178 : 1088,
             scale: 1,
             rotate: 10,
@@ -238,7 +238,7 @@ const Pieces = ({
         });
         setTinyArc1({
           position: {
-            x: realWindowWidth > 2000 ? 51 : windowWidth >= 992 ? 233 : 33,
+            x: realWindowWidth > 2000 ? 251 : windowWidth >= 992 ? 233 : 33,
             y: realWindowWidth > 2000 ? 1767 : windowWidth >= 992 ? 1295 : 1195,
             scale: 0.8,
             rotate: 0,
@@ -251,7 +251,7 @@ const Pieces = ({
           position: {
             x:
               realWindowWidth > 2000
-                ? windowWidth - 218
+                ? windowWidth - 418
                 : windowWidth >= 992
                 ? windowWidth - 420
                 : windowWidth - 170,
@@ -263,7 +263,7 @@ const Pieces = ({
         });
         setLudovic({
           position: {
-            x: realWindowWidth > 2000 ? 28 : windowWidth >= 992 ? 210 : 10,
+            x: realWindowWidth > 2000 ? 228 : windowWidth >= 992 ? 210 : 10,
             y: realWindowWidth > 2000 ? 2320 : windowWidth >= 992 ? 1510 : 1530,
             scale: 0.8,
             opacity: 1,
