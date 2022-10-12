@@ -1,5 +1,6 @@
-import { Flex, Image, Text } from "@chakra-ui/react";
-import { AnimatePresence, motion } from "framer-motion";
+import { Flex, Text } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const ServiceContent = ({ service, select, selectedService }) => {
   if (!service) return null;
@@ -20,8 +21,16 @@ const ServiceContent = ({ service, select, selectedService }) => {
           animate={{ transform: "scale(1)" }}
           exit={{ transform: "scale(0)" }}
           transition={{ type: "spring", duration: 0.5, stiffness: 70 }}
+          style={{ width: 300 }}
         >
-          <Image alt='service-thumbnail' src={service.img} width={300} />
+          <Image
+            alt='service-thumbnail'
+            src={service.img}
+            layout='responsive'
+            width={"500"}
+            height={"375"}
+            objectFit={"contain"}
+          />
         </motion.div>
       ) : (
         ""

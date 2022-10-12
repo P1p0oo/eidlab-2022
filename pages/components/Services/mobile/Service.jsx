@@ -1,15 +1,20 @@
-import { Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import Image from "next/image";
 
 const Service = ({ image, title, text, index }) => {
   return (
     <Flex direction={"column"} width={300} m={5} id={`service-${index}`}>
-      <Image
-        src={image}
-        alt='service-image'
-        height={200}
-        width={"fit-content"}
-        mb={5}
-      />
+      <Box height={200}>
+        <Image
+          src={image}
+          alt='service-image'
+          layout='responsive'
+          width={"600"}
+          height={"375"}
+          objectFit={"contain"}
+          mb={5}
+        />
+      </Box>
       <Heading as={"h3"} color={"brand.secondary"}>
         {title}
       </Heading>

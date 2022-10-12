@@ -1,7 +1,7 @@
 import { Container, Flex, Heading, List, ListItem } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Arrow from "../../../svg/Arrow";
-import Service from "./Service";
+
 import ServiceContent from "./ServiceContent";
 
 const Services = () => {
@@ -71,7 +71,11 @@ const Services = () => {
                 key={index}
                 transitionDuration={"0.25s"}
                 fontSize={selectedService == index ? "4xl" : "2xl"}
-                color={selectedService == index ? "brand.secondary" : "brand.bodyInvert"}
+                color={
+                  selectedService == index
+                    ? "brand.secondary"
+                    : "brand.bodyInvert"
+                }
                 cursor={"pointer"}
                 mt={4}
                 onMouseEnter={() => {
@@ -87,18 +91,18 @@ const Services = () => {
               </ListItem>
             ))}
           </List>
-          {services && <Flex position={"relative"} width={"50%"}>
-            {services.map((service, index) =>
-            (
-              <ServiceContent
-                key={index}
-                service={service}
-                select={index}
-                selectedService={selectedService}
-              ></ServiceContent>
-            )
-            )}
-          </Flex>}
+          {services && (
+            <Flex position={"relative"} width={"50%"}>
+              {services.map((service, index) => (
+                <ServiceContent
+                  key={index}
+                  service={service}
+                  select={index}
+                  selectedService={selectedService}
+                ></ServiceContent>
+              ))}
+            </Flex>
+          )}
         </Flex>
       </Flex>
     </Container>

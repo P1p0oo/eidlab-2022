@@ -1,12 +1,5 @@
-import {
-  Flex,
-  Heading,
-  Image,
-  Link,
-  List,
-  ListItem,
-  Text,
-} from "@chakra-ui/react";
+import { Flex, Heading, Link, List, ListItem, Text } from "@chakra-ui/react";
+import Image from "next/image";
 import Arrow from "../svg/Arrow";
 
 const Project = ({ image, techs, title, link, revert }) => {
@@ -15,16 +8,23 @@ const Project = ({ image, techs, title, link, revert }) => {
       m={7}
       mt={20}
       direction={{ base: "column", lg: revert ? "row-reverse" : "row" }}
+      height={"fit-content"}
     >
       <Link
         href={link}
         isExternal
         _hover={{ cursor: 'url("/svg/cursorProject.svg") 45 45, pointer' }}
+        width={{ base: "100%", lg: 600 }}
+        height={{ base: "fit-content", lg: 375 }}
+        position={"relative"}
       >
         <Image
           src={image}
           alt='project-thumbnail'
-          maxWidth={{ base: "100%", lg: 600 }}
+          layout='responsive'
+          width={"600"}
+          height={"375"}
+          objectFit={"contain"}
         />
       </Link>
       <Link
@@ -54,7 +54,12 @@ const Project = ({ image, techs, title, link, revert }) => {
               ))}
             </List>
           )}
-          <Heading as={"h3"} size={"2xl"} mt={2}>
+          <Heading
+            as={"h3"}
+            size={"2xl"}
+            mt={2}
+            textAlign={{ base: "start", lg: revert ? "end" : "start" }}
+          >
             {title}
           </Heading>
 
