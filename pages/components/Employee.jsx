@@ -10,7 +10,7 @@ const Employee = ({
 }) => {
   useEffect(() => {
     setPiecesTargeted(piecesTagets.current);
-  }, [piecesTagets]);
+  }, [piecesTagets, setPiecesTargeted]);
   return (
     <Flex
       direction={revert ? "row-reverse" : "row"}
@@ -24,7 +24,7 @@ const Employee = ({
         ml={{ base: 0, lg: revert ? 10 : 0 }}
         ref={(el) => (piecesTagets.current[index] = el)}
       ></Box>
-      <Flex direction={"column"} alignItems={revert ? "end" : "start"}>
+      {employee && <Flex direction={"column"} alignItems={revert ? "end" : "start"}>
         <Heading
           as={"h3"}
           size={{ base: "lg", lg: "xl" }}
@@ -38,7 +38,7 @@ const Employee = ({
         <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight={"bold"} m={0}>
           {employee.description}
         </Text>
-      </Flex>
+      </Flex>}
     </Flex>
   );
 };
