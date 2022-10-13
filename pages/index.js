@@ -22,11 +22,8 @@ export default function Home() {
   const [pagePositionPercentages, setPagePositionPercentages] =
     useState(undefined);
 
-  const [piecesTagets, setPiecesTargets] = useState([
-    useRef(),
-    useRef(),
-    useRef(),
-  ]);
+  const piecesTagets = useRef([]);
+  const [piecesTargeted, setPiecesTargeted] = useState(undefined);
 
   useEffect(() => {
     if (typeof window !== undefined) {
@@ -100,6 +97,8 @@ export default function Home() {
           pagePosition={pagePosition}
           isDesktop={isDesktop}
           paralax={paralax}
+          piecesTargeted={piecesTargeted}
+          scrollYProgress={scrollYProgress}
         ></Pieces>
       )}
 
@@ -110,7 +109,8 @@ export default function Home() {
           pagePosition={pagePosition}
           isDesktop={isDesktop}
           piecesTagets={piecesTagets}
-          setPiecesTargets={setPiecesTargets}
+          setPiecesTargeted={setPiecesTargeted}
+          piecesTargeted={piecesTargeted}
         ></Team>
         {isDesktop ? (
           <ServicesDesktop></ServicesDesktop>

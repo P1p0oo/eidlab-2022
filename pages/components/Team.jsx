@@ -3,7 +3,13 @@ import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Employee from "./Employee";
 
-const Team = ({ pagePosition, isDesktop, piecesTagets, setPiecesTargets }) => {
+const Team = ({
+  pagePosition,
+  isDesktop,
+  piecesTagets,
+  setPiecesTargeted,
+  piecesTargeted,
+}) => {
   const techList = [
     "HTML",
     "CSS",
@@ -79,6 +85,10 @@ const Team = ({ pagePosition, isDesktop, piecesTagets, setPiecesTargets }) => {
     },
   ];
 
+  useEffect(() => {
+    piecesTagets.current = piecesTagets.current.slice(0, employees.length);
+  }, [piecesTagets, employees.length]);
+
   const bannerControls = useAnimationControls();
 
   const [bannerSize, setBannerSize] = useState(undefined);
@@ -147,8 +157,9 @@ const Team = ({ pagePosition, isDesktop, piecesTagets, setPiecesTargets }) => {
                     employee={employee}
                     revert={index % 2 > 0}
                     piecesTagets={piecesTagets}
-                    setPiecesTargets={setPiecesTargets}
                     index={index}
+                    piecesTargeted={piecesTargeted}
+                    setPiecesTargeted={setPiecesTargeted}
                   ></Employee>
                 ))}
               </Flex>

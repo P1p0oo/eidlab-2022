@@ -13,12 +13,29 @@ const Pieces = ({
   pagePosition,
   isDesktop,
   paralax,
+  piecesTargeted,
+  scrollYProgress,
 }) => {
   const [bodyHeight, setBodyHeight] = useState(undefined);
 
   const [scaling, setScaling] = useState(1.0);
 
-  const ref = useRef(null);
+  const [paralaxOffset, setParalaxOffset] = useState(undefined);
+
+  const refContainer = useRef(null);
+  const refPieces = useRef(null);
+
+  useEffect(() => {
+    console.log("test");
+    if (!refPieces.current) return;
+    let paralaxOffsetParsed = refPieces.current
+      ? refPieces.current.outerHTML.split("translate")[1]
+      : undefined;
+    paralaxOffsetParsed = paralaxOffsetParsed
+      ? paralaxOffsetParsed.split("(")[1].split("px")[0]
+      : undefined;
+    setParalaxOffset(paralaxOffsetParsed);
+  }, [pagePosition]);
 
   // Moving pieces useState initialization
 
@@ -59,8 +76,8 @@ const Pieces = ({
   // Moving pieces default position configuration
 
   useEffect(() => {
-    if (!ref.current) return;
-    setBodyHeight(ref.current.clientHeight);
+    if (!refContainer.current) return;
+    setBodyHeight(refContainer.current.clientHeight);
     if (!bodyHeight || !windowWidth) return;
     setCircle1({
       position: {
@@ -143,11 +160,15 @@ const Pieces = ({
       },
       fill: "brand.secondary",
     });
-  }, [bodyHeight, windowWidth, ref]);
+  }, [bodyHeight, windowWidth, refContainer]);
 
   // Moving pieces breakpoint configuration
 
   useEffect(() => {
+    console.log(piecesTargeted);
+    console.log(paralaxOffset);
+
+    console.log(paralaxOffset);
     setScaling(isDesktop ? 1.5 : 1);
     switch (pagePosition) {
       case 0:
@@ -219,8 +240,14 @@ const Pieces = ({
         });
         setHalfCircle1({
           position: {
-            x: realWindowWidth > 2000 ? 388 : windowWidth >= 992 ? 370 : 170,
-            y: realWindowWidth > 2000 ? 1662 : windowWidth >= 992 ? 1190 : 1100,
+            // x: realWindowWidth > 2000 ? 388 : windowWidth >= 992 ? 370 : 170,
+            // y: realWindowWidth > 2000 ? 1662 : windowWidth >= 992 ? 1190 : 1100,
+            x: piecesTargeted ? piecesTargeted[0].offsetLeft + 148 : 0,
+            y:
+              piecesTargeted && refPieces
+                ? piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 12
+                : 0,
+
             scale: 1,
             rotate: 110,
             opacity: 0,
@@ -229,8 +256,13 @@ const Pieces = ({
         });
         setHalfCircle2({
           position: {
-            x: realWindowWidth > 2000 ? 240 : windowWidth >= 992 ? 222 : 22,
-            y: realWindowWidth > 2000 ? 1650 : windowWidth >= 992 ? 1178 : 1088,
+            // x: realWindowWidth > 2000 ? 240 : windowWidth >= 992 ? 222 : 22,
+            // y: realWindowWidth > 2000 ? 1650 : windowWidth >= 992 ? 1178 : 1088,
+            x: piecesTargeted ? piecesTargeted[0].offsetLeft : 0,
+            y:
+              piecesTargeted && refPieces
+                ? piecesTargeted[0].offsetTop - parseInt(paralaxOffset)
+                : 0,
             scale: 1,
             rotate: 10,
             opacity: 1,
@@ -238,8 +270,15 @@ const Pieces = ({
         });
         setTinyArc1({
           position: {
-            x: realWindowWidth > 2000 ? 251 : windowWidth >= 992 ? 233 : 33,
-            y: realWindowWidth > 2000 ? 1767 : windowWidth >= 992 ? 1295 : 1195,
+            // x: realWindowWidth > 2000 ? 251 : windowWidth >= 992 ? 233 : 33,
+            // y: realWindowWidth > 2000 ? 1767 : windowWidth >= 992 ? 1295 : 1195,
+            x: piecesTargeted ? piecesTargeted[0].offsetLeft + 20 : 0,
+            y:
+              piecesTargeted && refPieces
+                ? windowWidth >= 992
+                  ? piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 120
+                  : piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 100
+                : 0,
             scale: 0.8,
             rotate: 0,
             opacity: 1,
@@ -249,13 +288,18 @@ const Pieces = ({
         });
         setMathias({
           position: {
-            x:
-              realWindowWidth > 2000
-                ? windowWidth - 418
-                : windowWidth >= 992
-                ? windowWidth - 420
-                : windowWidth - 190,
-            y: realWindowWidth > 2000 ? 1990 : windowWidth >= 992 ? 1330 : 1300,
+            // x:
+            //   realWindowWidth > 2000
+            //     ? windowWidth - 418
+            //     : windowWidth >= 992
+            //     ? windowWidth - 420
+            //     : windowWidth - 190,
+            // y: realWindowWidth > 2000 ? 1990 : windowWidth >= 992 ? 1330 : 1300,
+            x: piecesTargeted ? piecesTargeted[1].offsetLeft : 0,
+            y:
+              piecesTargeted && refPieces
+                ? piecesTargeted[1].offsetTop - parseInt(paralaxOffset)
+                : 0,
             scale: 0.8,
             opacity: 1,
           },
@@ -263,8 +307,13 @@ const Pieces = ({
         });
         setLudovic({
           position: {
-            x: realWindowWidth > 2000 ? 228 : windowWidth >= 992 ? 210 : 10,
-            y: realWindowWidth > 2000 ? 2320 : windowWidth >= 992 ? 1510 : 1530,
+            // x: realWindowWidth > 2000 ? 228 : windowWidth >= 992 ? 210 : 10,
+            // y: realWindowWidth > 2000 ? 2320 : windowWidth >= 992 ? 1510 : 1530,
+            x: piecesTargeted ? piecesTargeted[2].offsetLeft : 0,
+            y:
+              piecesTargeted && refPieces
+                ? piecesTargeted[2].offsetTop - parseInt(paralaxOffset)
+                : 0,
             scale: 0.8,
             opacity: 1,
           },
@@ -366,7 +415,16 @@ const Pieces = ({
       default:
         break;
     }
-  }, [pagePosition, windowWidth, bodyHeight, isDesktop, realWindowWidth]);
+  }, [
+    pagePosition,
+    windowWidth,
+    bodyHeight,
+    isDesktop,
+    realWindowWidth,
+    piecesTargeted,
+    paralaxOffset,
+    refPieces,
+  ]);
 
   return (
     <Flex justifyContent={"center"}>
@@ -376,9 +434,9 @@ const Pieces = ({
         zIndex={0}
         width={"100%"}
         height={"100%"}
-        ref={ref}
+        ref={refContainer}
       >
-        <motion.div style={{ y: paralax }}>
+        <motion.div style={{ y: paralax }} ref={refPieces}>
           {!bodyHeight ? (
             ""
           ) : (

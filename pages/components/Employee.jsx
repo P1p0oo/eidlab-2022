@@ -5,22 +5,24 @@ const Employee = ({
   employee,
   revert,
   index,
-  piecesTargets,
-  setPiecesTargets,
+  piecesTagets,
+  setPiecesTargeted,
 }) => {
   useEffect(() => {
-    console.log(piecesTargets);
-  }, [piecesTargets]);
-  piecesTargets && (
+    setPiecesTargeted(piecesTagets.current);
+  }, [piecesTagets]);
+  return (
     <Flex
       direction={revert ? "row-reverse" : "row"}
       justifyContent={revert ? "end" : "start"}
       alignItems={"center"}
     >
       <Box
-        width={{ base: 170 }}
+        width={{ base: 170, lg: 200 }}
         height={{ base: 150 }}
-        // ref={piecesTargets[index]}
+        mr={{ base: 0, lg: revert ? 0 : 10 }}
+        ml={{ base: 0, lg: revert ? 10 : 0 }}
+        ref={(el) => (piecesTagets.current[index] = el)}
       ></Box>
       <Flex direction={"column"} alignItems={revert ? "end" : "start"}>
         <Heading
