@@ -66,7 +66,7 @@ const Services = () => {
         margin={"auto"}
         mb={9}
       >
-        Je peux vous accompagner sur :
+        Nous pouvons vous accompagner sur :
       </Heading>
       <Flex
         overflowX={"scroll"}

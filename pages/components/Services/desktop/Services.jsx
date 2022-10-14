@@ -62,7 +62,7 @@ const Services = () => {
         pt={40}
       >
         <Heading as='h2' size={"3xl"} textAlign={"center"}>
-          Je peux vous accompagner sur :
+          Nous pouvons vous accompagner sur :
         </Heading>
         <Flex mt={20} width={"100%"} height={"100%"}>
           <List fontWeight={"semibold"} width={"50%"}>
