@@ -12,7 +12,7 @@ const theme = extendTheme({
       secondary: "#FFDC24", //yellow
       tertiary: "#83EAE4", //tertiary
       highlight: "#FF5101", //orange
-      body: "black",
+      body: "#1F2028",
       bodyInvert: "white",
     },
   },
@@ -28,6 +28,7 @@ const theme = extendTheme({
       },
       body: {
         overflowX: "hidden",
+        color: "#1F2028",
       },
       a: {
         _hover: {
