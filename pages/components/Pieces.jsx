@@ -201,8 +201,15 @@ const Pieces = ({
         });
         setTinyArc1({
           position: {
-            x: realWindowWidth > 2000 ? 298 : windowWidth >= 992 ? 280 : 100,
-            y: realWindowWidth > 2000 ? 1687 : 1215,
+            // x: realWindowWidth > 2000 ? 298 : windowWidth >= 992 ? 280 : 100,
+            x: piecesTargeted ? piecesTargeted[0].offsetLeft + 50 : 0,
+            // y: realWindowWidth > 2000 ? 1687 : 1215,
+            y:
+              piecesTargeted && refPieces
+                ? windowWidth >= 992
+                  ? piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 120
+                  : piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 100
+                : 0,
             scale: 0.8,
             rotate: -60,
             opacity: 0,
