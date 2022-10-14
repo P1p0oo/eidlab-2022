@@ -20,22 +20,8 @@ const Pieces = ({
 
   const [scaling, setScaling] = useState(1.0);
 
-  const [parallaxOffset, setParallaxOffset] = useState(undefined);
-
   const refContainer = useRef(null);
   const refPieces = useRef(null);
-  const displayImage = useAnimationControls();
-
-  useEffect(() => {
-    if (!refPieces.current) return;
-    let parallaxOffsetParsed = refPieces.current
-      ? refPieces.current.outerHTML.split("translate")[1]
-      : undefined;
-    parallaxOffsetParsed = parallaxOffsetParsed
-      ? parallaxOffsetParsed.split("(")[1].split("px")[0]
-      : undefined;
-    setParallaxOffset(parallaxOffsetParsed);
-  }, [pagePosition]);
 
   // Moving pieces useState initialization
 
@@ -443,7 +429,6 @@ const Pieces = ({
     isDesktop,
     realWindowWidth,
     piecesTargeted,
-    parallaxOffset,
     refPieces,
   ]);
 
