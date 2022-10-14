@@ -1,4 +1,3 @@
-import { ArrowDownIcon } from "@chakra-ui/icons";
 import { Box, Flex, Link, Text } from "@chakra-ui/react";
 import Arrow from "../svg/Arrow";
 import { motion } from "framer-motion";

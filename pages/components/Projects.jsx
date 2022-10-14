@@ -1,4 +1,4 @@
-import { Center, Container, Flex, Heading } from "@chakra-ui/react";
+import { Container, Flex, Heading } from "@chakra-ui/react";
 import Project from "./Project";
 
 const Projects = () => {

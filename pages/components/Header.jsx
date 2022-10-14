@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Heading, Link } from "@chakra-ui/react";
+import { Flex, Heading, Link } from "@chakra-ui/react";
 import Image from "next/image";
 
 const Header = ({ bgColor }) => {

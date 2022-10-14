@@ -1,5 +1,5 @@
 import { Container, Flex, Heading, List, ListItem } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Arrow from "../../../svg/Arrow";
 
 import ServiceContent from "./ServiceContent";

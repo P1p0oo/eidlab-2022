@@ -1,5 +1,4 @@
 import { Flex, Heading, Icon, Image, Link, Text } from "@chakra-ui/react";
-import Circle from "../svg/Circle";
 
 const Contact = () => {
   return (

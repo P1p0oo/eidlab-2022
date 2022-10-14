@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 const Employee = ({
   employee,
@@ -24,21 +24,23 @@ const Employee = ({
         ml={{ base: 0, lg: revert ? 10 : 0 }}
         ref={(el) => (piecesTagets.current[index] = el)}
       ></Box>
-      {employee && <Flex direction={"column"} alignItems={revert ? "end" : "start"}>
-        <Heading
-          as={"h3"}
-          size={{ base: "lg", lg: "xl" }}
-          color={"brand.primary"}
-        >
-          {employee.name}
-        </Heading>
-        <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight={"bold"} m={0}>
-          {employee.position}
-        </Text>
-        <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight={"bold"} m={0}>
-          {employee.description}
-        </Text>
-      </Flex>}
+      {employee && (
+        <Flex direction={"column"} alignItems={revert ? "end" : "start"}>
+          <Heading
+            as={"h3"}
+            size={{ base: "lg", lg: "xl" }}
+            color={"brand.primary"}
+          >
+            {employee.name}
+          </Heading>
+          <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight={"bold"} m={0}>
+            {employee.position}
+          </Text>
+          <Text fontSize={{ base: "xl", lg: "2xl" }} fontWeight={"bold"} m={0}>
+            {employee.description}
+          </Text>
+        </Flex>
+      )}
     </Flex>
   );
 };
