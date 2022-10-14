@@ -1,8 +1,11 @@
 import { Flex, Heading, Link, List, ListItem, Text } from "@chakra-ui/react";
+import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import Image from "next/image";
 import Arrow from "../svg/Arrow";
 
 const Project = ({ image, techs, title, link, revert }) => {
+  const displayImage = useAnimationControls();
+
   return (
     <Flex
       m={7}
@@ -18,14 +21,17 @@ const Project = ({ image, techs, title, link, revert }) => {
         height={{ base: "fit-content", lg: 375 }}
         position={"relative"}
       >
-        <Image
-          src={image}
-          alt='project-thumbnail'
-          layout='responsive'
-          width={"600"}
-          height={"375"}
-          objectFit={"contain"}
-        />
+        <motion.div initial={{ scale: 0 }} animate={displayImage}>
+          <Image
+            src={image}
+            alt='project-thumbnail'
+            layout='responsive'
+            width={"600"}
+            height={"375"}
+            objectFit={"contain"}
+            onLoadingComplete={() => displayImage.start({ scale: 1 })}
+          />
+        </motion.div>
       </Link>
       <Link
         href={link}

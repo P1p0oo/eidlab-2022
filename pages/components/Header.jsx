@@ -1,4 +1,5 @@
 import { Flex, Heading, Link } from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 
 const Header = ({ bgColor }) => {
@@ -26,6 +27,7 @@ const Header = ({ bgColor }) => {
               transitionDuration: "1s",
               opacity: bgColor == "brand.primary" ? "0%" : "100%",
             }}
+            priority
           />
           <Flex position={"absolute"}>
             <Image

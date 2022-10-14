@@ -3,7 +3,7 @@ import Arc from "../svg/Arc";
 import Circle from "../svg/Circle";
 import HalfCircle from "../svg/HalfCircle";
 import TinyArc from "../svg/TinyArc";
-import { motion } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
@@ -24,6 +24,7 @@ const Pieces = ({
 
   const refContainer = useRef(null);
   const refPieces = useRef(null);
+  const displayImage = useAnimationControls();
 
   useEffect(() => {
     console.log("test");
@@ -520,6 +521,7 @@ const Pieces = ({
                     width={"150px"}
                     height={"150px"}
                     alt='philippe'
+                    priority
                   />
                 </Box>
               </motion.div>
@@ -541,6 +543,7 @@ const Pieces = ({
                     height={"150px"}
                     alt={"mathias"}
                     style={{ borderRadius: 100 }}
+                    priority
                   />
                 </Box>
               </motion.div>
@@ -561,6 +564,7 @@ const Pieces = ({
                     height={"150px"}
                     style={{ borderRadius: 100 }}
                     alt={"ludovic"}
+                    priority
                   />
                 </Box>
               </motion.div>
