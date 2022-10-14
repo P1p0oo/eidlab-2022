@@ -22,7 +22,7 @@ const Projects = () => {
           <Project
             image={"/images/inside-lyon.png"}
             title={"Inside Lyon"}
-            techs={["Wordpress", "Javascript"]}
+            techs={["Wordpress", "Elementor", "PHP", "Javascript"]}
             link={"https://www.inside-lyon.com/"}
           ></Project>
           <Project

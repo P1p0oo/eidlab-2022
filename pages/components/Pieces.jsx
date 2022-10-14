@@ -201,11 +201,12 @@ const Pieces = ({
         });
         setTinyArc1({
           position: {
-            // x: realWindowWidth > 2000 ? 298 : windowWidth >= 992 ? 280 : 100,
-            x: piecesTargeted ? piecesTargeted[0].offsetLeft + 50 : 0,
-            // y: realWindowWidth > 2000 ? 1687 : 1215,
+            x:
+              piecesTargeted && piecesTargeted[0]
+                ? piecesTargeted[0].offsetLeft + 50
+                : 0,
             y:
-              piecesTargeted && refPieces
+              piecesTargeted && piecesTargeted[0] && refPieces
                 ? windowWidth >= 992
                   ? piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 120
                   : piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 100
@@ -247,11 +248,12 @@ const Pieces = ({
         });
         setHalfCircle1({
           position: {
-            // x: realWindowWidth > 2000 ? 388 : windowWidth >= 992 ? 370 : 170,
-            // y: realWindowWidth > 2000 ? 1662 : windowWidth >= 992 ? 1190 : 1100,
-            x: piecesTargeted ? piecesTargeted[0].offsetLeft + 148 : 0,
+            x:
+              piecesTargeted && piecesTargeted[0]
+                ? piecesTargeted[0].offsetLeft + 148
+                : 0,
             y:
-              piecesTargeted && refPieces
+              piecesTargeted && piecesTargeted[0] && refPieces
                 ? piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 12
                 : 0,
 
@@ -263,11 +265,12 @@ const Pieces = ({
         });
         setHalfCircle2({
           position: {
-            // x: realWindowWidth > 2000 ? 240 : windowWidth >= 992 ? 222 : 22,
-            // y: realWindowWidth > 2000 ? 1650 : windowWidth >= 992 ? 1178 : 1088,
-            x: piecesTargeted ? piecesTargeted[0].offsetLeft : 0,
+            x:
+              piecesTargeted && piecesTargeted[0]
+                ? piecesTargeted[0].offsetLeft
+                : 0,
             y:
-              piecesTargeted && refPieces
+              piecesTargeted && piecesTargeted[0] && refPieces
                 ? piecesTargeted[0].offsetTop - parseInt(paralaxOffset)
                 : 0,
             scale: 1,
@@ -279,9 +282,12 @@ const Pieces = ({
           position: {
             // x: realWindowWidth > 2000 ? 251 : windowWidth >= 992 ? 233 : 33,
             // y: realWindowWidth > 2000 ? 1767 : windowWidth >= 992 ? 1295 : 1195,
-            x: piecesTargeted ? piecesTargeted[0].offsetLeft + 20 : 0,
+            x:
+              piecesTargeted && piecesTargeted[0]
+                ? piecesTargeted[0].offsetLeft + 20
+                : 0,
             y:
-              piecesTargeted && refPieces
+              piecesTargeted && piecesTargeted[0] && refPieces
                 ? windowWidth >= 992
                   ? piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 120
                   : piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 100
@@ -302,9 +308,12 @@ const Pieces = ({
             //     ? windowWidth - 420
             //     : windowWidth - 190,
             // y: realWindowWidth > 2000 ? 1990 : windowWidth >= 992 ? 1330 : 1300,
-            x: piecesTargeted ? piecesTargeted[1].offsetLeft : 0,
+            x:
+              piecesTargeted && piecesTargeted[1]
+                ? piecesTargeted[1].offsetLeft
+                : 0,
             y:
-              piecesTargeted && refPieces
+              piecesTargeted && piecesTargeted[1] && refPieces
                 ? piecesTargeted[1].offsetTop - parseInt(paralaxOffset)
                 : 0,
             scale: 0.8,
@@ -316,9 +325,12 @@ const Pieces = ({
           position: {
             // x: realWindowWidth > 2000 ? 228 : windowWidth >= 992 ? 210 : 10,
             // y: realWindowWidth > 2000 ? 2320 : windowWidth >= 992 ? 1510 : 1530,
-            x: piecesTargeted ? piecesTargeted[2].offsetLeft : 0,
+            x:
+              piecesTargeted && piecesTargeted[2]
+                ? piecesTargeted[2].offsetLeft
+                : 0,
             y:
-              piecesTargeted && refPieces
+              piecesTargeted && piecesTargeted[2] && refPieces
                 ? piecesTargeted[2].offsetTop - parseInt(paralaxOffset)
                 : 0,
             scale: 0.8,

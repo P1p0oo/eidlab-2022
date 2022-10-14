@@ -43,6 +43,7 @@ const Intro = () => {
             height={35}
             width={40}
             fill={"brand.body"}
+            aria-label={"Découvrir"}
           />
         </Link>
       </Flex>

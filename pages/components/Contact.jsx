@@ -28,10 +28,8 @@ const Contact = () => {
       >
         philippe@eid-lab.com
       </Link>
-      <Link isExternal href='https://fr.linkedin.com/in/philippe-eid-669636a6'>
+      <Link isExternal href='https://fr.linkedin.com/company/eid-lab'>
         <Flex justifyContent={"center"} alignItems={"center"}>
-          {/* <Circle fill={"brand.bodyInvert"} boxSize={81}></Circle> */}
-
           <Flex
             justifyContent={"center"}
             alignItems={"center"}
