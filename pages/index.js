@@ -47,7 +47,11 @@ export default function Home() {
 
   const { scrollYProgress } = useScroll();
 
-  const paralax = useTransform(scrollYProgress, [0, 1], [0, -500], {
+  const parallax = useTransform(scrollYProgress, [0, 1], [0, -500], {
+    clamp: false,
+  });
+
+  const invertParallax = useTransform(scrollYProgress, [0, 1], [0, 500], {
     clamp: false,
   });
 
@@ -96,7 +100,8 @@ export default function Home() {
           realWindowWidth={realWindowWidth}
           pagePosition={pagePosition}
           isDesktop={isDesktop}
-          paralax={paralax}
+          parallax={parallax}
+          invertParallax={invertParallax}
           piecesTargeted={piecesTargeted}
           scrollYProgress={scrollYProgress}
         ></Pieces>

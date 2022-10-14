@@ -12,30 +12,29 @@ const Pieces = ({
   realWindowWidth,
   pagePosition,
   isDesktop,
-  paralax,
+  parallax,
   piecesTargeted,
-  scrollYProgress,
+  invertParallax,
 }) => {
   const [bodyHeight, setBodyHeight] = useState(undefined);
 
   const [scaling, setScaling] = useState(1.0);
 
-  const [paralaxOffset, setParalaxOffset] = useState(undefined);
+  const [parallaxOffset, setParallaxOffset] = useState(undefined);
 
   const refContainer = useRef(null);
   const refPieces = useRef(null);
   const displayImage = useAnimationControls();
 
   useEffect(() => {
-    console.log("test");
     if (!refPieces.current) return;
-    let paralaxOffsetParsed = refPieces.current
+    let parallaxOffsetParsed = refPieces.current
       ? refPieces.current.outerHTML.split("translate")[1]
       : undefined;
-    paralaxOffsetParsed = paralaxOffsetParsed
-      ? paralaxOffsetParsed.split("(")[1].split("px")[0]
+    parallaxOffsetParsed = parallaxOffsetParsed
+      ? parallaxOffsetParsed.split("(")[1].split("px")[0]
       : undefined;
-    setParalaxOffset(paralaxOffsetParsed);
+    setParallaxOffset(parallaxOffsetParsed);
   }, [pagePosition]);
 
   // Moving pieces useState initialization
@@ -90,8 +89,8 @@ const Pieces = ({
     });
     setHalfCircle1({
       position: {
-        x: windowWidth - 60,
-        y: 150,
+        x: windowWidth - 100,
+        y: 120,
         scale: 1,
         rotate: 0,
         opacity: 1,
@@ -166,10 +165,6 @@ const Pieces = ({
   // Moving pieces breakpoint configuration
 
   useEffect(() => {
-    console.log(piecesTargeted);
-    console.log(paralaxOffset);
-
-    console.log(paralaxOffset);
     setScaling(isDesktop ? 1.5 : 1);
     switch (pagePosition) {
       case 0:
@@ -183,8 +178,8 @@ const Pieces = ({
         });
         setHalfCircle1({
           position: {
-            x: windowWidth - 60,
-            y: 150,
+            x: windowWidth - 100,
+            y: 120,
             scale: 1,
             rotate: 0,
             opacity: 1,
@@ -193,8 +188,8 @@ const Pieces = ({
         });
         setHalfCircle2({
           position: {
-            x: windowWidth - 134,
-            y: 225,
+            x: windowWidth - 100,
+            y: 120,
             scale: 1,
             rotate: -90,
             opacity: 0,
@@ -204,13 +199,13 @@ const Pieces = ({
           position: {
             x:
               piecesTargeted && piecesTargeted[0]
-                ? piecesTargeted[0].offsetLeft + 50
+                ? piecesTargeted[0].offsetLeft + 10
                 : 0,
             y:
               piecesTargeted && piecesTargeted[0] && refPieces
                 ? windowWidth >= 992
-                  ? piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 120
-                  : piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 100
+                  ? piecesTargeted[0].offsetTop + 120
+                  : piecesTargeted[0].offsetTop + 100
                 : 0,
             scale: 0.8,
             rotate: -60,
@@ -222,7 +217,10 @@ const Pieces = ({
         setMathias({
           position: {
             x: windowWidth,
-            y: realWindowWidth > 2000 ? 1990 : windowWidth >= 992 ? 1350 : 1300,
+            y:
+              piecesTargeted && piecesTargeted[1] && refPieces
+                ? piecesTargeted[1].offsetTop
+                : 0,
             scale: 0.8,
             opacity: 0,
           },
@@ -231,7 +229,10 @@ const Pieces = ({
         setLudovic({
           position: {
             x: -200,
-            y: realWindowWidth > 2000 ? 2320 : 1530,
+            y:
+              piecesTargeted && piecesTargeted[2] && refPieces
+                ? piecesTargeted[2].offsetTop
+                : 0,
             scale: 0.8,
             opacity: 0,
           },
@@ -251,15 +252,15 @@ const Pieces = ({
           position: {
             x:
               piecesTargeted && piecesTargeted[0]
-                ? piecesTargeted[0].offsetLeft + 148
+                ? piecesTargeted[0].offsetLeft
                 : 0,
             y:
               piecesTargeted && piecesTargeted[0] && refPieces
-                ? piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 12
+                ? piecesTargeted[0].offsetTop
                 : 0,
 
             scale: 1,
-            rotate: 110,
+            rotate: 100,
             opacity: 0,
           },
           fill: "brand.primary",
@@ -272,7 +273,7 @@ const Pieces = ({
                 : 0,
             y:
               piecesTargeted && piecesTargeted[0] && refPieces
-                ? piecesTargeted[0].offsetTop - parseInt(paralaxOffset)
+                ? piecesTargeted[0].offsetTop
                 : 0,
             scale: 1,
             rotate: 10,
@@ -285,13 +286,13 @@ const Pieces = ({
             // y: realWindowWidth > 2000 ? 1767 : windowWidth >= 992 ? 1295 : 1195,
             x:
               piecesTargeted && piecesTargeted[0]
-                ? piecesTargeted[0].offsetLeft + 20
+                ? piecesTargeted[0].offsetLeft + 30
                 : 0,
             y:
               piecesTargeted && piecesTargeted[0] && refPieces
                 ? windowWidth >= 992
-                  ? piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 120
-                  : piecesTargeted[0].offsetTop - parseInt(paralaxOffset) + 100
+                  ? piecesTargeted[0].offsetTop + 140
+                  : piecesTargeted[0].offsetTop + 120
                 : 0,
             scale: 0.8,
             rotate: 0,
@@ -315,7 +316,7 @@ const Pieces = ({
                 : 0,
             y:
               piecesTargeted && piecesTargeted[1] && refPieces
-                ? piecesTargeted[1].offsetTop - parseInt(paralaxOffset)
+                ? piecesTargeted[1].offsetTop
                 : 0,
             scale: 0.8,
             opacity: 1,
@@ -332,7 +333,7 @@ const Pieces = ({
                 : 0,
             y:
               piecesTargeted && piecesTargeted[2] && refPieces
-                ? piecesTargeted[2].offsetTop - parseInt(paralaxOffset)
+                ? piecesTargeted[2].offsetTop
                 : 0,
             scale: 0.8,
             opacity: 1,
@@ -442,7 +443,7 @@ const Pieces = ({
     isDesktop,
     realWindowWidth,
     piecesTargeted,
-    paralaxOffset,
+    parallaxOffset,
     refPieces,
   ]);
 
@@ -456,7 +457,7 @@ const Pieces = ({
         height={"100%"}
         ref={refContainer}
       >
-        <motion.div style={{ y: paralax }} ref={refPieces}>
+        <motion.div style={{ y: parallax }} ref={refPieces}>
           {!bodyHeight ? (
             ""
           ) : (
@@ -485,37 +486,78 @@ const Pieces = ({
                   delay: tinyArc1.delay,
                 }}
               >
-                <TinyArc
-                  fill={"brand.primary"}
-                  transform={`scale(${scaling})`}
-                  position={"absolute"}
-                  width={"101px"}
-                  height={"69px"}
-                ></TinyArc>
+                <motion.div
+                  style={{
+                    y: invertParallax,
+                  }}
+                >
+                  <TinyArc
+                    fill={"brand.primary"}
+                    transform={`scale(${scaling})`}
+                    position={"absolute"}
+                    width={"101px"}
+                    height={"69px"}
+                  ></TinyArc>
+                </motion.div>
               </motion.div>
               <motion.div
-                style={{ position: "absolute" }}
-                animate={halfCircle1.position}
+                style={{ position: "absolute", width: "150px" }}
+                animate={{
+                  x: halfCircle1.position.x,
+                  y: halfCircle1.position.y,
+                  scale: halfCircle1.position.scale,
+                  opacity: halfCircle1.position.opacity,
+                }}
                 transition={{
                   type: "spring",
                   stiffness: 50,
                   duration: 0.5,
                 }}
               >
-                <HalfCircle
-                  position={"absolute"}
-                  width={"150px"}
-                  height={"150px"}
-                  fill={"brand.primary"}
-                  transform={`scale(${scaling})`}
-                ></HalfCircle>
+                <motion.div
+                  animate={{ rotate: halfCircle1.position.rotate }}
+                  style={{
+                    // position: "absolute",
+                    scale: scaling,
+                    y: invertParallax,
+                    rotate: halfCircle1.position.rotate,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 50,
+                    duration: 0.5,
+                  }}
+                >
+                  <HalfCircle
+                    // position={"absolute"}
+                    width={"150px"}
+                    height={"150px"}
+                    fill={"brand.primary"}
+                  ></HalfCircle>
+                </motion.div>
               </motion.div>
               <motion.div
-                style={{ position: "absolute", width: "150px" }}
-                animate={halfCircle2.position}
+                style={{
+                  position: "absolute",
+                  width: "150px",
+                }}
+                animate={{
+                  x: halfCircle2.position.x,
+                  y: halfCircle2.position.y,
+                  scale: halfCircle2.position.scale,
+                  opacity: halfCircle2.position.opacity,
+                }}
                 transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
               >
-                <Box position={"absolute"} transform={`scale(${scaling})`}>
+                <motion.div
+                  animate={{ rotate: halfCircle2.position.rotate }}
+                  style={{
+                    position: "absolute",
+                    scale: scaling,
+                    y: invertParallax,
+                  }}
+                  transition={{ type: "spring", stiffness: 50, duration: 0.5 }}
+                >
                   <Image
                     src='/images/halfCirclePhilippe.png'
                     width={"150px"}
@@ -523,7 +565,7 @@ const Pieces = ({
                     alt='philippe'
                     priority
                   />
-                </Box>
+                </motion.div>
               </motion.div>
 
               <motion.div
@@ -536,7 +578,12 @@ const Pieces = ({
                   delay: mathias.delay,
                 }}
               >
-                <Box transform={`scale(${scaling})`}>
+                <motion.div
+                  style={{
+                    scale: scaling,
+                    y: invertParallax,
+                  }}
+                >
                   <Image
                     src='/images/mathias.jpg'
                     width={"150px"}
@@ -545,7 +592,7 @@ const Pieces = ({
                     style={{ borderRadius: 100 }}
                     priority
                   />
-                </Box>
+                </motion.div>
               </motion.div>
               <motion.div
                 style={{ position: "absolute" }}
@@ -557,7 +604,12 @@ const Pieces = ({
                   delay: ludovic.delay,
                 }}
               >
-                <Box transform={`scale(${scaling})`}>
+                <motion.div
+                  style={{
+                    scale: scaling,
+                    y: invertParallax,
+                  }}
+                >
                   <Image
                     src='/images/ludovic.jpg'
                     width={"150px"}
@@ -566,7 +618,7 @@ const Pieces = ({
                     alt={"ludovic"}
                     priority
                   />
-                </Box>
+                </motion.div>
               </motion.div>
 
               <motion.div
