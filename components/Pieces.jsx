@@ -1,8 +1,8 @@
 import { Box, Container, Flex } from "@chakra-ui/react";
-import Arc from "../svg/Arc";
-import Circle from "../svg/Circle";
-import HalfCircle from "../svg/HalfCircle";
-import TinyArc from "../svg/TinyArc";
+import Arc from "./svg/Arc";
+import Circle from "./svg/Circle";
+import HalfCircle from "./svg/HalfCircle";
+import TinyArc from "./svg/TinyArc";
 import { motion, useAnimationControls } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";

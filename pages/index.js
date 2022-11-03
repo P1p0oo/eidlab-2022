@@ -1,14 +1,14 @@
 import { Box, Flex, useMediaQuery } from "@chakra-ui/react";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
-import Contact from "./components/Contact";
-import Header from "./components/Header";
-import Intro from "./components/Intro";
-import Pieces from "./components/Pieces";
-import Projects from "./components/Projects";
-import ServicesMobile from "./components/Services/mobile/Services";
-import ServicesDesktop from "./components/Services/desktop/Services";
-import Team from "./components/Team";
+import Contact from "../components/Contact";
+import Header from "../components/Header";
+import Intro from "../components/Intro";
+import Pieces from "../components/Pieces";
+import Projects from "../components/Projects";
+import ServicesMobile from "../components/Services/mobile/Services";
+import ServicesDesktop from "../components/Services/desktop/Services";
+import Team from "../components/Team";
 import { useScroll, useTransform } from "framer-motion";
 
 export default function Home() {

@@ -1,6 +1,6 @@
 import { Flex, Heading, Link } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
-import Arrow from "../../../svg/Arrow";
+import Arrow from "../../svg/Arrow";
 import Service from "./Service";
 
 const Services = () => {

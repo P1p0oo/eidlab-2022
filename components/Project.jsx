@@ -1,7 +1,7 @@
 import { Flex, Heading, Link, List, ListItem, Text } from "@chakra-ui/react";
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import Image from "next/image";
-import Arrow from "../svg/Arrow";
+import Arrow from "./svg/Arrow";
 
 const Project = ({ image, techs, title, link, revert }) => {
   const displayImage = useAnimationControls();
